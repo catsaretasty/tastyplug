@@ -2,10 +2,17 @@
     function tastyPlugCheckJquery() {
         if(window.jQuery) {
             window.postMessage({type: "TASTYPLUG", event: "JQUERY_LOADED"}, "*");
-            tastyPlugCheckCanLoad();
+            tastyPlugCheckForJqueryUi();
         } else {
             setTimeout(tastyPlugCheckJquery, 50);
         }
+    }
+    
+    function tastyPlugCheckForJqueryUi() {
+        if(!window.jQuery.ui) {
+            window.postMessage({type: "TASTYPLUG", event: "LOAD_JQUERY_UI"}, "*");
+        } 
+        tastyPlugCheckCanLoad();
     }
 
     function canLoad() {
@@ -18,7 +25,7 @@
     
     function tastyPlugCheckCanLoad() {
         if(canLoad()) {
-            window.postMessage({type: 'TASTYPLUG', event: "CAN_LOAD"}, "*");
+            window.postMessage({type: 'TASTYPLUG', event: "LOAD_CORE"}, "*");
         } else {
             setTimeout(tastyPlugCheckCanLoad, 50)
         }

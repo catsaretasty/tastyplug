@@ -1,3 +1,5 @@
+var loaded = false;
+
 window.addEventListener('message', function(event) {
     // only accept messages from ourselves
     if (event.source != window) {
@@ -6,7 +8,7 @@ window.addEventListener('message', function(event) {
 
     if (event.data.type && event.data.type == 'TASTYPLUG') {
         switch(event.data.event) {
-            case 'JQUERY_LOADED':
+            case 'LOAD_JQUERY_UI':
                 var jQueryUI = document.createElement('script');
                 jQueryUI.id = 'tastyplug-jquery-ui-loader';
                 jQueryUI.src = '<%= tastyplug_base_url %>/jquery-ui.min.js';
@@ -15,14 +17,16 @@ window.addEventListener('message', function(event) {
                 };
                 (document.head || document.documentElement).appendChild(jQueryUI);
                 break;
-            case 'CAN_LOAD':
-                var tastyplug = document.createElement('script');
-                tastyplug.id = 'tastyplug';
-                tastyplug.src = '<%= tastyplug_base_url %>/tastyplug.core.min.js';
-                tastyplug.onload = function() {
-                    this.parentNode.removeChild(this);
-                };
-                (document.head || document.documentElement).appendChild(tastyplug);
+            case 'LOAD_CORE':
+                if (!loaded) {var tastyplug = document.createElement('script');
+                    tastyplug.id = 'tastyplug';
+                    tastyplug.src = '<%= tastyplug_base_url %>/tastyplug.core.min.js';
+                    tastyplug.onload = function() {
+                        this.parentNode.removeChild(this);
+                    };
+                    (document.head || document.documentElement).appendChild(tastyplug);
+                    loaded = true;
+                }
                 break;
             case 'RELOAD':
                 console.log('TastyPlug is suppose to reload here lol');
