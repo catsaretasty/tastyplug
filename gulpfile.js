@@ -14,6 +14,7 @@ const replace = require('gulp-replace');
 const beautify = require('gulp-beautify');
 const uglify = require('gulp-uglify');
 const jade = require('gulp-jade');
+const cleanCSS = require('gulp-clean-css');
 
 gulp.task('clean-dirs', ['clean-build', 'clean-public']);
 gulp.task('clean-build', cb => fs.removeAsync('build'));
@@ -149,6 +150,8 @@ gulp.task('site-images', () => {
 
 gulp.task('site-style', () => {
     return gulp.src('site/style/*.css')
+        .pipe(cleanCSS())
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('public/style/'));
 });
 
