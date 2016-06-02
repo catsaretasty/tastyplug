@@ -19,7 +19,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-Array.prototype.isArray = true;
+
 if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
 (function ($) {
     var sock, afktime = Date.now(), pms = false, drag = false, hidevideo = false, joincd = false,
