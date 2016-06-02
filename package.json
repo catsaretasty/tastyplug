@@ -3,7 +3,7 @@
   "display_name": "TastyPlug",
   "tastyplug_base_url": "https://tastyplug.tastycat.org",
   "version_title": "now rising from the dead.",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "a plug.dj extension",
   "scripts": {
     "test": "node_modules/brunch/bin/brunch",
