@@ -8,17 +8,21 @@ html
         link(href='https://tastyplug.tastycat.org/style/skeleton.min.css', rel='stylesheet', type='text/css')
         link(href='https://tastyplug.tastycat.org/style/hint.min.css', rel='stylesheet', type='text/css')
         style.
-            body {
-                background-color: #0C0C0C;
-                background-image:url(data:image/svg+xml;base64,CiAgPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nMTY2JyBoZWlnaHQ9JzI2NS42JyB2aWV3Qm94PScwIDAgMTAgMTYnPgogICAgPGcgaWQ9J2MnPgogICAgICA8cGF0aCBmaWxsPScjMEQwRDBEJyBkPSdNMCAwbDUgM3Y1bC01IC0zeicvPgogIAkJPHBhdGggZmlsbD0nIzBGMEYwRicgZD0nTTEwIDBsLTUgM3Y1bDUgLTMnLz4KICAJPC9nPgogIAk8dXNlIHg9JzUnIHk9JzgnIHhsaW5rOmhyZWY9JyNjJyAvPgogIAk8dXNlIHg9Jy01JyB5PSc4JyB4bGluazpocmVmPScjYycgLz4KICA8L3N2Zz4KICA=);
-            }
-            .container {
-                background-color: #FFF;
-                width: 50%;
+            html, body {
                 height: 100%;
-                margin-left: 25%;
-                position: absolute;
-                padding: 30px 20px 40px 30px;
+            }
+            .center {
+                text-align: center;
+            }
+            @media (min-width: 1000px) {
+                body {
+                    background: #0C0C0C url(data:image/svg+xml;base64,CiAgPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nMTY2JyBoZWlnaHQ9JzI2NS42JyB2aWV3Qm94PScwIDAgMTAgMTYnPgogICAgPGcgaWQ9J2MnPgogICAgICA8cGF0aCBmaWxsPScjMEQwRDBEJyBkPSdNMCAwbDUgM3Y1bC01IC0zeicvPgogIAkJPHBhdGggZmlsbD0nIzBGMEYwRicgZD0nTTEwIDBsLTUgM3Y1bDUgLTMnLz4KICAJPC9nPgogIAk8dXNlIHg9JzUnIHk9JzgnIHhsaW5rOmhyZWY9JyNjJyAvPgogIAk8dXNlIHg9Jy01JyB5PSc4JyB4bGluazpocmVmPScjYycgLz4KICA8L3N2Zz4KICA=);
+                }
+                .container {
+                    background-color: #ffffff;
+                    padding: 4rem;
+                    min-height: 100%;
+                }
             }
     body
         div.container
@@ -40,20 +44,19 @@ html
                         div.three.columns
                             a(href="https://chrome.google.com/webstore/detail/tastyplug/faccgibalfdoihmenknhpfhldkmgaang",target="_blank")
                                 button(data-hint="It may take up to 12 hours to receive updates!").hint--bottom.hint--warning.hint--rounded Chrome
-                hr
-            center
-                h4 Features
-            div.row
-                div.six.columns
-                    ul
+            hr
+            h4.center Features
+            div.row.u-center
+                div.one-half.column
+                    ul.u-pull-right
                         li AutoWoot
                         li AutoJoin
                         li Hide Video
                         li Legacy Chat
                         li Booth Alert
                         li Chat Images
-                div.six.columns
-                    ul
+                div.one-half.column
+                    ul.u-pull-left
                         li Custom Emotes
                         li Chat Mentions
                         li
