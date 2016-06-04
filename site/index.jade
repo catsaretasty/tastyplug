@@ -26,24 +26,23 @@ html
             }
     body
         div.container
-            center
-                h1 TastyPlug - The plug.dj extension.
-            div.row
-                center 
-                    h5 Drag the "TastyPlug" button to your bookmarks or right click it to save as a bookmark.
-                span
-                    div.row
-                        div.three.columns
-                            a(href="javascript:(function(){$.getScript('https://tastyplug.tastycat.org/tastyplug.min.js');}());")
-                                button(data-hint="Recommended").hint--bottom.hint--success.hint--rounded TastyPlug
-                        div.three.columns
-                            a(href="https://tastyplug.tastycat.org/tastyplug.user.js")
-                                button(data-hint="for Greasemonkey and Tampermonkey").hint--bottom.hint--info.hint--rounded UserScript
-                        div.three.columns
-                                button(data-hint="Soon").hint--bottom.hint--error.hint--rounded Firefox
-                        div.three.columns
-                            a(href="https://chrome.google.com/webstore/detail/tastyplug/faccgibalfdoihmenknhpfhldkmgaang",target="_blank")
-                                button(data-hint="It may take up to 12 hours to receive updates!").hint--bottom.hint--warning.hint--rounded Chrome
+            h1.center TastyPlug - The plug.dj extension.
+            div.center
+                h5 Drag the "TastyPlug" button to your bookmarks or right click it to save as a bookmark.
+                p Hover over a button to see more information.
+
+                div.row
+                    div.three.columns
+                        a(href="javascript:(function(){$.getScript('https://tastyplug.tastycat.org/tastyplug.min.js');}());")
+                            button(data-hint="Recommended").hint--bottom.hint--success.hint--rounded TastyPlug
+                    div.three.columns
+                        a(href="https://tastyplug.tastycat.org/tastyplug.user.js")
+                            button(data-hint="for Greasemonkey and Tampermonkey").hint--bottom.hint--info.hint--rounded UserScript
+                    div.three.columns
+                            button(data-hint="Soon").hint--bottom.hint--error.hint--rounded Firefox
+                    div.three.columns
+                        a(href="https://chrome.google.com/webstore/detail/tastyplug/faccgibalfdoihmenknhpfhldkmgaang",target="_blank")
+                            button(data-hint="It may take up to 12 hours to receive updates!").hint--bottom.hint--warning.hint--rounded Chrome
             hr
             h4.center Features
             div.row.u-center
