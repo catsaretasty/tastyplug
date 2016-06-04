@@ -53,17 +53,6 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
         loadUI();
         loadEvents();
         loadEmotes();
-        tos.roomcheck = setInterval(function(){
-            if (location.pathname != room) {
-                clearInterval(tos.roomcheck);
-                a = function(){
-                    if ($('#room-loader').length) setTimeout(a,200);
-                    // todo: ?
-                    else $.getScript('https://tastyplug.tastycat.org/tastyplug.min.js');
-                };
-                a();
-            }
-        },200);
         if (room == '/tastycat') eta();
         if (settings.autowoot) woot();
         if (settings.autojoin) {
