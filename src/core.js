@@ -45,7 +45,8 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
             emotes: false,
             hidden: false,
             mention: 0,
-            tastymojis: false
+            tastymojis: false,
+            emojiset: "ios"
         };
     
     function startup() {
@@ -60,6 +61,7 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
             if (!getLocked() && API.getWaitListPosition() == -1 && API.getDJ() && API.getDJ().id != API.getUser().id) join();
         }
         legacyChat.toggle(settings.legacychat);
+        tastyMojis.toggle();
         Chat('init', 'TastyPlug v' + version + ' <%= version_title %>');
         console.log('[TastyPlug v' + version + '] <%= version_title %>');
     };
@@ -83,8 +85,9 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
     };
 
     function loadUI() {
-        $('head').append('<style type=text/css id=tastyplug-css>#tastyplug-ui{-moz-user-select:none;-webkit-user-select:none;position:absolute;width:150px;border-radius:10px;background-color:#1C1F25;background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0,#1C1F25),color-stop(1,#282D33));background-image:-o-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:-moz-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:-webkit-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:-ms-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:linear-gradient(to top,#1C1F25 0,#282D33 100%);z-index:9;padding-bottom:1.5px;color:#DDD}#tastyplug-ui a{color:inherit;text-decoration:none}.tastyplug-icon{position:relative;float:right}#tastyplug-ui .tp-toggle{color:#F04F30}#tastyplug-ui .tp-toggle.button-on{color:#1CC7ED}#tp-title{margin:0 15px;padding:3px 0;color:#A874FC;font-size:19px;cursor:move}.tp-mainbutton,.tp-secbutton{margin:0 15px;padding:2px 0 3px;font-size:15px;border-top:1px solid rgba(56,60,68,.85);cursor:pointer}.tp-highlight{background-color:rgba(168,116,252,.33)}.tp-secbutton{padding-left:8px}#tastyplug-ui .icon-drag-handle{position:relative;float:right;top:3px;height:14px;width:14px;background-position:-183px -113px}#waitlist-button .eta{left:45px;font-size:10px}#chat-messages .tastyplug-pm .icon{left:5.5px;top:6px}#chat-pm-button{left:-3px}#chat-messages div.tastyplug-pm.mention{background:linear-gradient(135deg,#FF00CB 0,#0a0a0a 13%,#0a0a0a 100%)}#chat-messages div.tastyplug-pm.mention:nth-child(2n+1){background:linear-gradient(135deg,#FF00CB 0,#111317 13%,#111317 100%)}#chat div[class*=" tp-"],#chat div[class^=tp-]{background-color:#0a0a0a}#chat div[class*=" tp-"]:nth-child(2n+1),#chat div[class^=tp-]:nth-child(2n+1){background-color:#111317}#chat-messages .tastyplug-pm .msg .from span.un{color:#FF00CB;font-weight:700}#user-lists .list.room .user .icon-meh{left:auto;right:8px;top:-1px}#chat-messages [data-cid|="3946454"]{background-color:#2D002D}#chat .mention:nth-child(2n+1)[data-cid|="3946454"],#chat .message:nth-child(2n+1)[data-cid|="3946454"],#chat-messages .emote:nth-child(2n+1)[data-cid|="3946454"]{background-color:#240024}#chat .emote[data-cid|="3946454"] .text,#chat .mention[data-cid|="3946454"] .text,#chat .message[data-cid|="3946454"] .text{font-weight:700;color:#CFCFCF}#chat .emote[data-cid|="3946454"] .text{font-style:normal}div.badge-box img.tastyplug-icon{padding:2px}#chat .cm.tp-info .text,#chat .cm.tp-info div.from.tastyplug span.un{color:#1CC7ED}#chat .cm.tp-info .text span{color:#EEE}#chat .cm.tp-error .text,#chat .cm.tp-error div.from.tastyplug span.un{color:#C42E3B}#chat .cm.tp-init .text,#chat .cm.tp-init div.from.tastyplug span.un{color:#D1D119}#chat .cm.tp-join-admin .text,#chat .cm.tp-join-admin div.from.tastyplug span.un{color:#1CC7ED}#chat .cm.tp-join-ba .text,#chat .cm.tp-join-ba div.from.tastyplug span.un{color:#088C30}#chat .cm.tp-join-host .text,#chat .cm.tp-join-host div.from.tastyplug span.un{color:#D1D119}#chat .cm.tp-join-cohost .text,#chat .cm.tp-join-cohost div.from.tastyplug span.un{color:#F59425}#chat .cm.tp-join-staff .text,#chat .cm.tp-join-staff div.from.tastyplug span.un{color:#C322E3}#chat .cm.tp-join-friend .text,#chat .cm.tp-join-friend div.from.tastyplug span.un{color:#009CDD}#chat .cm.tp-join-lvl1 .text,#chat .cm.tp-join-lvl1 div.from.tastyplug span.un{color:#FFDD6F}.tp-img{width:auto;height:auto;max-width:270px;max-height:250px}.legacy-chat .tastyplug-img-delete{top:26px}.tastyplug-img-delete{position:absolute;top:42px;right:4px;background-color:#F04F30;padding:0 3px;cursor:pointer;z-index:1}#playback .tp-video-hide,#playback.tp-video-hide{height:0!important}.custom-emote{display:inline-block;vertical-align:top}.custom-emote-mid{display:inline-block;vertical-align:middle}#chat-messages [data-cid|="3946454"] .bdg{background:url(https://tastyplug.tastycat.org/images/tastybot.png) no-repeat;left:2.5px;top:2.5px}.icon-tp-pm{background:url(https://tastyplug.tastycat.org/images/private-message.png) no-repeat}</style>');
-        $('body').append('<div id=tp-room style=position:absolute;top:54px;left:0></div><div id=tastyplug-ui><div id=tp-title>TastyPlug <img class=tastyplug-icon src=https://tastyplug.tastycat.org/images/tastybot.png></div><div class="tp-mainbutton tp-toggle button-on" id=tp-autowoot><span>Autowoot</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-autojoin><span>Autojoin</span></div><div class="tp-mainbutton tp-toggle" id=tp-hidevideo><span>Hide Video</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-legacychat><span>Legacy Chat</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-boothalert><span>Booth Alert</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-histalert><span>History Alert</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-mehtrack><span>Meh Tracker</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-chatimgs><span>Chat Images</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-emotes><span>Cust. Emotes</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-tastymojis><span>Tastymojis</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-mentions><div class="icon icon-drag-handle"></div><span>Chat Mentions</span></div><div class="tp-secbutton tp-secmention" id=tp-addmention><span>Add</span></div><div class="tp-secbutton tp-secmention" id=tp-delmention><span>Delete</span></div><div class="tp-secbutton tp-secmention" id=tp-listmention><span>List</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-joinnotifs><div class="icon icon-drag-handle"></div><span>Join Notifs.</span></div><div class="tp-secbutton tp-secjoin tp-toggle button-on" id=tp-joinranks><span>Ranks</span></div><div class="tp-secbutton tp-secjoin tp-toggle button-on" id=tp-joinfriends><span>Friends</span></div><div class="tp-secbutton tp-secjoin tp-toggle button-on" id=tp-joinlvl1><span>Level 1s</span></div><a href=https://emotes.tastycat.org target=_blank><div class=tp-mainbutton id=tp-listemotes><span>Emotes List</span></div></a></div>');
+        $('head').append('<style type=text/css id=tastyplug-css>#tastyplug-ui{-moz-user-select:none;-webkit-user-select:none;position:absolute;width:150px;border-radius:10px;background-color:#1C1F25;background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0,#1C1F25),color-stop(1,#282D33));background-image:-o-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:-moz-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:-webkit-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:-ms-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:linear-gradient(to top,#1C1F25 0,#282D33 100%);z-index:9;padding-bottom:1.5px;color:#DDD}#tastyplug-ui a{color:inherit;text-decoration:none}.tastyplug-icon{position:relative;float:right}#tastyplug-ui .tp-toggle{color:#F04F30}#tastyplug-ui .tp-toggle.button-on{color:#1CC7ED}#tp-title{margin:0 15px;padding:3px 0;color:#A874FC;font-size:19px;cursor:move}.tp-mainbutton,.tp-secbutton{margin:0 15px;padding:2px 0 3px;font-size:15px;border-top:1px solid rgba(56,60,68,.85);cursor:pointer}.tp-highlight{background-color:rgba(168,116,252,.33)}.tp-secbutton{padding-left:8px}#tastyplug-ui .icon-drag-handle{position:relative;float:right;top:3px;height:14px;width:14px;background-position:-183px -113px}#waitlist-button .eta{left:45px;font-size:10px}#chat-messages .tastyplug-pm .icon{left:5.5px;top:6px}#chat-pm-button{left:-3px}#chat-messages div.tastyplug-pm.mention{background:linear-gradient(135deg,#FF00CB 0,#0a0a0a 13%,#0a0a0a 100%)}#chat-messages div.tastyplug-pm.mention:nth-child(2n+1){background:linear-gradient(135deg,#FF00CB 0,#111317 13%,#111317 100%)}#chat div[class*=" tp-"],#chat div[class^=tp-]{background-color:#0a0a0a}#chat div[class*=" tp-"]:nth-child(2n+1),#chat div[class^=tp-]:nth-child(2n+1){background-color:#111317}#chat-messages .tastyplug-pm .msg .from span.un{color:#FF00CB;font-weight:700}#user-lists .list.room .user .icon-meh{left:auto;right:8px;top:-1px}#chat-messages [data-cid|="3946454"]{background-color:#2D002D}#chat .mention:nth-child(2n+1)[data-cid|="3946454"],#chat .message:nth-child(2n+1)[data-cid|="3946454"],#chat-messages .emote:nth-child(2n+1)[data-cid|="3946454"]{background-color:#240024}#chat .emote[data-cid|="3946454"] .text,#chat .mention[data-cid|="3946454"] .text,#chat .message[data-cid|="3946454"] .text{font-weight:700;color:#CFCFCF}#chat .emote[data-cid|="3946454"] .text{font-style:normal}div.badge-box img.tastyplug-icon{padding:2px}#chat .cm.tp-info .text,#chat .cm.tp-info div.from.tastyplug span.un{color:#1CC7ED}#chat .cm.tp-info .text span{color:#EEE}#chat .cm.tp-error .text,#chat .cm.tp-error div.from.tastyplug span.un{color:#C42E3B}#chat .cm.tp-init .text,#chat .cm.tp-init div.from.tastyplug span.un{color:#D1D119}#chat .cm.tp-join-admin .text,#chat .cm.tp-join-admin div.from.tastyplug span.un{color:#1CC7ED}#chat .cm.tp-join-ba .text,#chat .cm.tp-join-ba div.from.tastyplug span.un{color:#088C30}#chat .cm.tp-join-host .text,#chat .cm.tp-join-host div.from.tastyplug span.un{color:#D1D119}#chat .cm.tp-join-cohost .text,#chat .cm.tp-join-cohost div.from.tastyplug span.un{color:#F59425}#chat .cm.tp-join-staff .text,#chat .cm.tp-join-staff div.from.tastyplug span.un{color:#C322E3}#chat .cm.tp-join-friend .text,#chat .cm.tp-join-friend div.from.tastyplug span.un{color:#009CDD}#chat .cm.tp-join-lvl1 .text,#chat .cm.tp-join-lvl1 div.from.tastyplug span.un{color:#FFDD6F}.tp-img{width:auto;height:auto;max-width:270px;max-height:250px}.legacy-chat .tastyplug-img-delete{top:26px}.tastyplug-img-delete{position:absolute;top:42px;right:4px;background-color:#F04F30;padding:0 3px;cursor:pointer;z-index:1}#playback .tp-video-hide,#playback.tp-video-hide{height:0!important}.custom-emote{display:inline-block;vertical-align:top}.custom-emote-mid{display:inline-block;vertical-align:middle}#chat-messages [data-cid|="3946454"] .bdg{background:url(https://tastyplug.tastycat.org/images/tastybot.png) no-repeat;}#chat-messages [data-cid|="3946454"] .badge-box{background:rgba(0,0,0,0)!important;}.icon-tp-pm{background:url(https://tastyplug.tastycat.org/images/private-message.png) no-repeat}</style>');
+        $('body').append('<div id=tp-room style=position:absolute;top:54px;left:0></div><div id=tastyplug-ui><div id=tp-title>TastyPlug <img class=tastyplug-icon src=https://tastyplug.tastycat.org/images/tastybot.png></div><div class="tp-mainbutton tp-toggle button-on" id=tp-autowoot><span>Autowoot</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-autojoin><span>Autojoin</span></div><div class="tp-mainbutton tp-toggle" id=tp-hidevideo><span>Hide Video</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-legacychat><span>Legacy Chat</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-boothalert><span>Booth Alert</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-histalert><span>History Alert</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-mehtrack><span>Meh Tracker</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-chatimgs><span>Chat Images</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-emotes><span>Cust. Emotes</span></div>'+
+            '<div class="tp-mainbutton tp-toggle button-on" id=tp-emojis><div class="icon icon-drag-handle"></div><span>Tastymojis</span></div><div class="tp-secbutton tp-secmojis tp-toggle" id=tp-emojiios><span>iOS</span></div><div class="tp-secbutton tp-secmojis tp-toggle" id=tp-emojitwitter><span>Twitter</span></div><div class="tp-secbutton tp-secmojis tp-toggle" id=tp-emojiemojione><span>Emojione</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-mentions><div class="icon icon-drag-handle"></div><span>Chat Mentions</span></div><div class="tp-secbutton tp-secmention" id=tp-addmention><span>Add</span></div><div class="tp-secbutton tp-secmention" id=tp-delmention><span>Delete</span></div><div class="tp-secbutton tp-secmention" id=tp-listmention><span>List</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-joinnotifs><div class="icon icon-drag-handle"></div><span>Join Notifs.</span></div><div class="tp-secbutton tp-secjoin tp-toggle button-on" id=tp-joinranks><span>Ranks</span></div><div class="tp-secbutton tp-secjoin tp-toggle button-on" id=tp-joinfriends><span>Friends</span></div><div class="tp-secbutton tp-secjoin tp-toggle button-on" id=tp-joinlvl1><span>Level 1s</span></div><a href=https://emotes.tastycat.org target=_blank><div class=tp-mainbutton id=tp-listemotes><span>Emotes List</span></div></a></div>');
         if (room == '/tastycat') $('#waitlist-button').append('<span class="eta"></span>');
         if (room == '/hummingbird-me') $('#tp-autojoin').remove();
 
@@ -96,7 +99,8 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
         if (!settings.mehtrack) $('#tp-mehtrack').removeClass('button-on');
         if (!settings.chatimgs) $('#tp-chatimgs').removeClass('button-on');
         if (!settings.emotes) $('#tp-emotes').removeClass('button-on');
-        if (!settings.tastymojis) $('#tp-tastymojis').removeClass('button-on');
+        if (!settings.tastymojis) $('#tp-emojis').removeClass('button-on');
+        $('#tp-emoji' + settings.emojiset).addClass('button-on');
         if (!settings.chatmentions) $('#tp-mentions').removeClass('button-on');
         if (!settings.joinnotifs.toggle) $('#tp-joinnotifs').removeClass('button-on');
         if (!settings.joinnotifs.ranks) $('#tp-joinranks').removeClass('button-on');
@@ -113,7 +117,6 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
         }
         $('.tp-secbutton').hide();
         $('#tastyplug-ui').css(settings.uipos);
-        if (settings.tastymojis) $('body').append('<style id="tastymoji-css" type="text/css">#chat span.emoji-sizer{width: 22px; height: 22px;}</style>');
         var uicont = {
             width: $('.app-right').position().left,
             height: $('.app-right').height()
@@ -235,10 +238,10 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
         });
         //history alert
         $('#tp-histalert').click(function() {
-         settings.histalert = !settings.histalert;
-         $(this).toggleClass('button-on');
-         saveSettings();
-         });
+            settings.histalert = !settings.histalert;
+            $(this).toggleClass('button-on');
+            saveSettings();
+        });
         //chat images
         $('#tp-chatimgs').click(function() {
             settings.chatimgs = !settings.chatimgs;
@@ -252,15 +255,40 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
             saveSettings();
         });
         // tastymojis
-        $('#tp-tastymojis').click(function() {
+        $('#tp-emojis .icon-drag-handle').click(function() {
+            $('.tp-secmojis').slideToggle();
+        });
+        $('#tp-emojis span').click(function() {
             settings.tastymojis = !settings.tastymojis;
-            $(this).toggleClass('button-on');
+            $(this).parent().toggleClass('button-on');
+            if (tastyMojis) tastyMojis.toggle();
             saveSettings();
-            if (settings.tastymojis) {
-                if ($('#tastymoji-css').length) return;
-                $('body').append('<style id="tastymoji-css" type="text/css">#chat span.emoji-sizer{width: 22px; height: 22px;}</style>');
-            } else {
-                if ($('#tastymoji-css')) $('#tastymoji-css').remove();
+        });
+        $('#tp-emojiios').click(function() {
+            if (settings.emojiset != "ios") {
+                $('#tp-emoji' + settings.emojiset).removeClass('button-on');
+                settings.emojiset = "ios";
+                $(this).toggleClass('button-on');
+                tastyMojis.toggle(true);
+                saveSettings();
+            }
+        });
+        $('#tp-emojitwitter').click(function() {
+            if (settings.emojiset != "twitter") {
+                $('#tp-emoji' + settings.emojiset).removeClass('button-on');
+                settings.emojiset = "twitter";
+                $(this).toggleClass('button-on');
+                tastyMojis.toggle(true);
+                saveSettings();
+            }
+        });
+        $('#tp-emojiemojione').click(function() {
+            if (settings.emojiset != "emojione") {
+                $('#tp-emoji' + settings.emojiset).removeClass('button-on');
+                settings.emojiset = "emojione";
+                $(this).toggleClass('button-on');
+                tastyMojis.toggle(true);
+                saveSettings();
             }
         });
         //chat mentions
@@ -374,7 +402,7 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
             $('#tooltip.tp-songtitle').remove();
             legacyChat.toggle(false);
 
-            $('#tastymoji-css').remove();
+            $('#tastymojis-css').remove();
             for (var i in tos) clearInterval(tos[i]);
             saveSettings();
             console.log('[TastyPlug v' + version + '] shut down.');
@@ -812,6 +840,23 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
         function saveSettings(){localStorage.setItem('tastyPlugSettings',JSON.stringify(settings))}
         function getLocked(){return $('.lock-toggle .icon').hasClass('icon-locked')}
         function woot(){$('#woot').click()}
+
+        var tastyMojis = (function() {
+            var sizeCSS = "#chat span.emoji-sizer{width:22px;height:22px;}";
+            var toggle = function (type) {
+                if (!type) {
+                    if (!settings.tastymojis) {
+                        $("style#tastymojis-css").remove();
+                    } else {
+                        $("head").append('<style id="tastymojis-css" type="text/css">' + sizeCSS + (settings.emojiset != "ios" ? "span.emoji-inner{background:url('https://tastyplug.tastycat.org/images/" + settings.emojiset + ".png')" : "") + '</style>');
+                    }
+                } else {
+                    console.log(settings.emojiset);
+                    if (settings.tastymojis) $("#tastymojis-css").text(sizeCSS + (settings.emojiset != "ios" ? "span.emoji-inner{background:url('https://tastyplug.tastycat.org/images/" + settings.emojiset + ".png')" : ""));
+                }
+            }
+            return {toggle: toggle};
+        })();
 
         // Original legacy chat author: @git
         var legacyChat = (function() {
