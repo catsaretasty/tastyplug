@@ -3,7 +3,7 @@
   "display_name": "TastyPlug",
   "tastyplug_base_url": "https://tastyplug.tastycat.org",
   "version_title": "now rising from the dead.",
-  "version": "3.6.1",
+  "version": "3.7.0",
   "description": "a plug.dj extension",
   "scripts": {
     "sign": "./node_modules/web-ext/bin/web-ext sign --api-key user:12335406:167 --api-secret ${TASTYPLUG_AMO_SECRET} --source-dir build/extension --artifacts-dir build/dist",
