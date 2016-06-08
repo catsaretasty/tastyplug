@@ -3,7 +3,7 @@
   "display_name": "TastyPlug",
   "tastyplug_base_url": "https://tastyplug.tastycat.org",
   "version_title": "now rising from the dead.",
-  "version": "3.7.0",
+  "version": "3.7.1",
   "description": "a plug.dj extension",
   "scripts": {
     "sign": "./node_modules/web-ext/bin/web-ext sign --api-key user:12335406:167 --api-secret ${TASTYPLUG_AMO_SECRET} --source-dir build/extension --artifacts-dir build/dist",
@@ -28,7 +28,6 @@
     "gulp-beautify": "^2.0.0",
     "gulp-clean-css": "^2.0.9",
     "gulp-concat": "^2.6.0",
-    "gulp-data": "^1.2.1",
     "gulp-debug": "^2.1.2",
     "gulp-jade": "^1.1.0",
     "gulp-rename": "^1.2.2",

@@ -10,8 +10,8 @@ window.addEventListener('message', function(event) {
         switch(event.data.event) {
             case 'LOAD_JQUERY_UI':
                 var jQueryUI = document.createElement('script');
-                jQueryUI.id = 'tastyplug-jquery-ui-loader';
-                jQueryUI.src = '<%= tastyplug_base_url %>/jquery-ui.min.js';
+                jQueryUI.id = 'tastyplug-jquery-ui-custom-loader';
+                jQueryUI.src = '<%= tastyplug_base_url %>/jquery-ui.custom.min.js';
                 jQueryUI.onload = function () {
                     this.parentNode.removeChild(this);
                 };

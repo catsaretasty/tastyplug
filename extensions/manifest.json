@@ -35,6 +35,6 @@
   "web_accessible_resources": [
     "tastyplug.core.js",
     "bootstrap.js",
-    "jquery-ui.js"
+    "jquery-ui.custom.js"
   ]
 }

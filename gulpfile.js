@@ -1,5 +1,4 @@
 const concat = require('gulp-concat');
-const data = require('gulp-data');
 const del = require('del');
 const Promise = require('bluebird');
 const fs = Promise.promisifyAll(require('fs-extra'));
@@ -56,18 +55,6 @@ gulp.task('build-lib', () => {
 
 gulp.task('build-tastyplug', () => {
     return gulp.src('src/loader.template.js', 'src/core.js')
-        .pipe(data((file, cb) => {
-            fs.readFile('src/core.js', 'utf8', (e, c) => {
-                if (e) cb(e);
-                else cb(null, {tastyplug_core: c});
-            });
-        }))
-        .pipe(data((file, cb) => {
-            fs.readFile('lib/jquery-ui.js', 'utf8', (e, c) => {
-                if (e) cb(e);
-                else cb(null, {jquery_ui: c});
-            });
-        }))
         .pipe(template())
         .pipe(template(pkg))
         .pipe(beautify({indentSize: 2}))
@@ -109,7 +96,7 @@ gulp.task('web_extension-icons', () => {
         .pipe(gulp.dest('build/extension/images'))
 });
 gulp.task('web_extension-src', () => {
-    return gulp.src([ 'build/tastyplug.core.js', 'lib/jquery-ui.js'])
+    return gulp.src([ 'build/tastyplug.core.js', 'lib/jquery-ui.custom.js'])
         .pipe(gulp.dest('build/extension/'))
 });
 
