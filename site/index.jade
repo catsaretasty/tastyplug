@@ -7,7 +7,21 @@ html
         link(href='https://tastyplug.tastycat.org/style/normalize.min.css', rel='stylesheet', type='text/css')
         link(href='https://tastyplug.tastycat.org/style/skeleton.min.css', rel='stylesheet', type='text/css')
         link(href='https://tastyplug.tastycat.org/style/hint.min.css', rel='stylesheet', type='text/css')
-        style.
+        script(type='text/javascript').
+            var warned = false;
+            var $ = {
+                getScript: function() {
+                    if (warned) return;
+                    var intro = document.getElementById('intro');
+                    var error = document.createElement('p');
+                    error.textContent = "The TastyPlug button is a bookmark, clicking it on this site does nothing.";
+                    error.textContent += " Please drag it to your bookmarks or right click it to save as a bookmark.";
+                    error.className += "error center";
+                    intro.appendChild(error);
+                    warned = true
+                }
+            };
+        style(type='text/css').
             html, body {
                 height: 100%;
             }
@@ -24,19 +38,24 @@ html
                     min-height: 100%;
                 }
             }
+            .error {
+                margin: 1rem;
+                padding: 15px;
+                background-color: #f2dede;
+            }
             .bold {
                 font-weight: bold;
             }
     body
         div.container
             h1.center TastyPlug - The plug.dj extension.
-            div.center
+            #intro.center
                 h5 Use the UserScript for the quickest updates and the best experience.
                 p All of them,
-                  span.bold  except for the bookmark
-                  | , start automatically when you enter a room on plug.dj. If you wish to
-                  | start it manually instead, drag the "TastyPlug" button to your bookmarks or
-                  | right click it to save as a bookmark.
+                    span.bold  except for the bookmark
+                    | , start automatically when you enter a room on plug.dj. If you wish to
+                    | start it manually instead, drag the "TastyPlug" button to your bookmarks or
+                    | right click it to save as a bookmark.
                 p Hover over a button to see more information.
 
                 div.row
@@ -55,7 +74,7 @@ html
                             button(data-hint="It may take up to 12 hours to receive updates!").hint--bottom.hint--warning.hint--rounded Chrome
             hr
             h4.center Features
-            div.row.u-center
+            div.row
                 div.one-half.column
                     ul.u-pull-right
                         li AutoWoot
