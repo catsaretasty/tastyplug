@@ -24,20 +24,29 @@ html
                     min-height: 100%;
                 }
             }
+            .bold {
+                font-weight: bold;
+            }
     body
         div.container
             h1.center TastyPlug - The plug.dj extension.
             div.center
-                h5 Drag the "TastyPlug" button to your bookmarks or right click it to save as a bookmark.
+                h5 Use the UserScript for the quickest updates and the best experience.
+                p All of them,
+                  span.bold  except for the bookmark
+                  | , start automatically when you enter a room on plug.dj. If you wish to
+                  | start it manually instead, drag the "TastyPlug" button to your bookmarks or
+                  | right click it to save as a bookmark.
                 p Hover over a button to see more information.
 
                 div.row
                     div.three.columns
-                        a(href="javascript:(function(){$.getScript('https://tastyplug.tastycat.org/tastyplug.min.js');}());")
-                            button(data-hint="Recommended").hint--bottom.hint--success.hint--rounded TastyPlug
-                    div.three.columns
                         a(href="https://tastyplug.tastycat.org/tastyplug.user.js")
-                            button(data-hint="for Greasemonkey and Tampermonkey").hint--bottom.hint--info.hint--rounded UserScript
+                            button(data-hint="Recommended. Use any UserScript Extension.").hint--bottom.hint--info.hint--rounded UserScript
+                    div.three.columns
+                        a(href="javascript:(function(){$.getScript('https://tastyplug.tastycat.org/tastyplug.min.js');}());")
+                            button(data-hint="Manual Bookmark").hint--bottom.hint--success.hint--rounded TastyPlug
+
                     div.three.columns
                         a(href="https://addons.mozilla.org/en-US/firefox/addon/tastyplug",target="_blank")
                             button(data-hint="It may take up from 3 to 5 days to receive updates!").hint--bottom.hint--warning.hint--rounded Firefox
