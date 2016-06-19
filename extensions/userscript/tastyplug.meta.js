@@ -14,6 +14,10 @@
 // @exclude         https://plug.dj/jobs
 // @exclude         https://plug.dj/partners
 // @exclude         https://plug.dj/press
+// @exclude         https://plug.dj/purchase
+// @exclude         https://plug.dj/subscribe
+// @exclude         https://plug.dj/@/*
+// @exclude         https://plug.dj/_/*
 // @author          Chip (git) & Olivier Houle (Fungus)
 // @version         <%= version %>
 // @downloadURL     <%= tastyplug_base_url %>/tastyplug.user.js
