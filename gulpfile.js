@@ -118,7 +118,7 @@ gulp.task('bookmark', () => {
 gulp.task('web_extension-build', ['chrome-build', 'firefox-build']);
 gulp.task('web_extension', ['web_extension-meta', 'web_extension-icons', 'web_extension-src']);
 
-gulp.task('site', ['site-html', 'site-dist', 'site-images', 'site-userscript', 'site-style', 'site-cname']);
+gulp.task('site', ['site-html', 'site-dist', 'site-images', 'site-userscript', 'site-style', 'site-assets']);
 gulp.task('site-html', () => {
     return gulp.src('site/*.jade')
         .pipe(jade())
@@ -148,7 +148,7 @@ gulp.task('site-userscript', () => {
 });
 
 gulp.task('site-cname', () => {
-    return gulp.src('site/CNAME')
+    return gulp.src('site/assets/*')
         .pipe(gulp.dest('public/'));
 });
 
