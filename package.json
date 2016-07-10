@@ -8,7 +8,7 @@
   "scripts": {
     "sign": "./node_modules/web-ext/bin/web-ext sign --api-key user:12335406:167 --api-secret ${TASTYPLUG_AMO_SECRET} --source-dir build/extension --artifacts-dir build/dist",
     "build": "./node_modules/gulp/bin/gulp.js",
-    "deploy": "rsync -rzP public/ tastyplug:/usr/local/www/tastyplug",
+    "deploy": "./deploy.sh",
     "release": ". ./secrets.sh && npm run build && npm run deploy && npm run sign"
   },
   "repository": {
