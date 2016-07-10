@@ -1,0 +1,38 @@
+<!DOCTYPE html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TastyPlug</title><link href="https://tastyplug.tastycat.org/style/normalize.min.css" rel="stylesheet" type="text/css"><link href="https://tastyplug.tastycat.org/style/skeleton.min.css" rel="stylesheet" type="text/css"><link href="https://tastyplug.tastycat.org/style/hint.min.css" rel="stylesheet" type="text/css"><script type="text/javascript">var warned = false;
+var $ = {
+    getScript: function() {
+        if (warned) return;
+        var intro = document.getElementById('intro');
+        var error = document.createElement('p');
+        error.textContent = "The TastyPlug button is a bookmark, clicking it on this site does nothing.";
+        error.textContent += " Please drag it to your bookmarks or right click it to save as a bookmark.";
+        error.className += "error center";
+        intro.appendChild(error);
+        warned = true
+    }
+};</script><style type="text/css">html, body {
+    height: 100%;
+}
+.center {
+    text-align: center;
+}
+@media (min-width: 1000px) {
+    body {
+        background: #0C0C0C url(data:image/svg+xml;base64,CiAgPHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHhtbG5zOnhsaW5rPSdodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rJyB3aWR0aD0nMTY2JyBoZWlnaHQ9JzI2NS42JyB2aWV3Qm94PScwIDAgMTAgMTYnPgogICAgPGcgaWQ9J2MnPgogICAgICA8cGF0aCBmaWxsPScjMEQwRDBEJyBkPSdNMCAwbDUgM3Y1bC01IC0zeicvPgogIAkJPHBhdGggZmlsbD0nIzBGMEYwRicgZD0nTTEwIDBsLTUgM3Y1bDUgLTMnLz4KICAJPC9nPgogIAk8dXNlIHg9JzUnIHk9JzgnIHhsaW5rOmhyZWY9JyNjJyAvPgogIAk8dXNlIHg9Jy01JyB5PSc4JyB4bGluazpocmVmPScjYycgLz4KICA8L3N2Zz4KICA=);
+    }
+    .container {
+        background-color: #ffffff;
+        padding: 4rem;
+        min-height: 100%;
+    }
+}
+.error {
+    margin: 1rem;
+    padding: 15px;
+    background-color: #f2dede;
+}
+.bold {
+    font-weight: bold;
+}</style></head><body><div class="container"><h1 class="center">TastyPlug - The plug.dj extension.</h1><div id="intro" class="center"><h5>Use the UserScript for the quickest updates and the best experience.</h5><p>All of them,<span class="bold"> except for the bookmark</span>, start automatically when you enter a room on plug.dj. If you wish to
+start it manually instead, drag the "TastyPlug" button to your bookmarks or
+right click it to save as a bookmark.</p><p>Hover over a button to see more information.</p><div class="row"><div class="three columns"><a href="https://tastyplug.tastycat.org/tastyplug.user.js"><button data-hint="Recommended. Use any UserScript Extension." class="hint--bottom hint--info hint--rounded">UserScript</button></a></div><div class="three columns"><a href="javascript:(function(){$.getScript('https://tastyplug.tastycat.org/tastyplug.min.js');}());"><button data-hint="Manual Bookmark" class="hint--bottom hint--success hint--rounded">TastyPlug</button></a></div><div class="three columns"><a href="https://addons.mozilla.org/en-US/firefox/addon/tastyplug" target="_blank"><button data-hint="It may take up from 3 to 5 days to receive updates!" class="hint--bottom hint--warning hint--rounded">Firefox</button></a></div><div class="three columns"><a href="https://chrome.google.com/webstore/detail/tastyplug/faccgibalfdoihmenknhpfhldkmgaang" target="_blank"><button data-hint="It may take up to 12 hours to receive updates!" class="hint--bottom hint--warning hint--rounded">Chrome</button></a></div></div></div><hr><h4 class="center">Features</h4><div class="row"><div class="one-half column"><ul class="u-pull-right"><li>AutoWoot</li><li>AutoJoin</li><li>Hide Video</li><li>Legacy Chat</li><li>Booth Alert</li><li>Chat Images</li></ul></div><div class="one-half column"><ul class="u-pull-left"><li>Custom Emotes</li><li>Chat Mentions</li><li><h6>Join Notifications</h6><ul><li>Ranks</li><li>Friends</li></ul></li></ul></div></div></div></body></html>
