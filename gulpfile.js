@@ -147,7 +147,7 @@ gulp.task('site-userscript', () => {
         .pipe(gulp.dest('public/'));
 });
 
-gulp.task('site-cname', () => {
+gulp.task('site-assets', () => {
     return gulp.src('site/assets/*')
         .pipe(gulp.dest('public/'));
 });
