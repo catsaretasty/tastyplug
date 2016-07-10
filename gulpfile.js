@@ -49,7 +49,7 @@ gulp.task('build-loader', () => {
 });
 
 gulp.task('build-lib', () => {
-    return gulp.src('lib/*')
+    return gulp.src('src/lib/*')
         .pipe(gulp.dest('build/'));
 });
 
@@ -96,7 +96,7 @@ gulp.task('web_extension-icons', () => {
         .pipe(gulp.dest('build/extension/images'))
 });
 gulp.task('web_extension-src', () => {
-    return gulp.src([ 'build/tastyplug.core.js', 'lib/jquery-ui.custom.js'])
+    return gulp.src([ 'build/tastyplug.core.js', 'src/lib/jquery-ui.custom.js'])
         .pipe(gulp.dest('build/extension/'))
 });
 
