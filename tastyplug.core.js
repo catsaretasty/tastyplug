@@ -595,6 +595,11 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
         }
     };
 
+    commands.opcheck = function(data) {
+        var media = API.getNextMedia().media;
+        API.sendChat('!opcheck cid ' + media.format + ' ' + media.cid);
+    };
+
     commands.lock = function(a) {
         if (getRank(API.getUser()) >= 3) API.moderateLockWaitList(true);
     };
