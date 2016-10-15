@@ -1,10 +1,9 @@
 # pls no
-node_modules
-build
-public
+node_modules/
+public/
 
 # secrets
 secrets.sh
 
 # web-ext
-web-ext-artifacts
+web-ext-artifacts/

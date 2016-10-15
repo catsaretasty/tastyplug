@@ -33,8 +33,6 @@
     }
   ],
   "web_accessible_resources": [
-    "tastyplug.core.js",
-    "bootstrap.js",
-    "jquery-ui.custom.js"
+    "tastyplug.js"
   ]
 }

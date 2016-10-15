@@ -1,6 +1,6 @@
 // if its already running, shut down, then run.
 if (typeof window.tastyPlugShutDown != "undefined" || typeof window.tplug != "undefined") window.tastyPlugShutDown();
-var tplug = {
+window.tplug = {
     version: "4.0.0",
     baseURL: "https://tastyplug.tastycat.org/",
     settings: {
@@ -42,7 +42,7 @@ var tplug = {
                 var history = API.getHistory().map(function(h) {
                     return h.media.cid;
                 });
-                
+
                 // clear votes & booth alert
                 tplug.session.votes = {};
                 delete tplug.session.boothTriggered;
@@ -54,7 +54,7 @@ var tplug = {
 
                 if (tplug.settings.historyAlert && Math.max(self.gRole, self.role) > 1 && history.indexOf(data.media.cid) != -1)
                     tplug.utils.addChat({
-                        type: "warning", 
+                        type: "warning",
                         message: "is playing a song from the History!<br />It was played " + (history.indexOf(data.media.cid) + 1) + " songs ago.",
                         icon: "chat-system",
                         user: API.getHistory()[history.indexOf(data.media.cid)].user
@@ -65,9 +65,9 @@ var tplug = {
                     name: data.split(" ")[0].substr(1).toLowerCase(),
                     args: data.split(" ").splice(1)
                 };
-                
+
                 if (command.name.charAt(0) == "/") command.name = command.name.substr(1);
-                
+
                 var user = API.getUser(),
                     keys = Object.keys(tplug.commands);
 
@@ -80,7 +80,7 @@ var tplug = {
             userJoin: function (user) {
                 if (user.id == 6141149) user.gRole == 5;
                 var self = API.getUser(),
-                        roles = {
+                    roles = {
                         5: "the Host",
                         4: "a Co-Host",
                         3: "a Manager",
@@ -92,7 +92,7 @@ var tplug = {
                         3: "a Brand Ambassador"
                     };
                 user.username += ",";
-                
+
                 if (tplug.settings.joinNotifications.enabled) {
                     if (Math.max(user.gRole, user.role) > 0 && tplug.settings.joinNotifications.ranks)
                         tplug.utils.addChat({
@@ -116,7 +116,7 @@ var tplug = {
                             user: user
                         });
                 }
-                
+
             },
             _voteUpdate: function (voteUpdate) {
                 if (voteUpdate.vote != -1) return;
@@ -127,9 +127,9 @@ var tplug = {
                 if (!tplug.session.votes[voteUpdate.user.id]) tplug.session.votes[voteUpdate.user.id] = 0;
                 // and add 1 to it
                 tplug.session.votes[voteUpdate.user.id]++;
-                
+
                 var _element = $(".tp.tp-meh.id-" + voteUpdate.user.id + ".history-" + tplug.modules.media.get("historyID")).last();
-                
+
                 if (_element.length)
                     _element.find(".text").text("has meh'd the song! (" + tplug.session.votes[voteUpdate.user.id] + "x)");
                 else
@@ -146,7 +146,7 @@ var tplug = {
                 var wl = waitlist.map(function (u) {
                     return u.id;
                 });
-                
+
                 if (tplug.settings.autoJoin) tplug.utils.autoJoinCheck();
 
                 if (tplug.settings.boothAlert)
@@ -199,13 +199,13 @@ var tplug = {
                         }
                     }
                 }
-                
+
                 if (tplug.settings.chatMentions.enabled && tplug.settings.chatMentions.mentions.length)
                     tplug.utils.customMentions(data);
-                
+
                 if (tplug.settings.customEmotes)
                     tplug.utils.customEmotes(data);
-                    
+
                 //if (tplug.settings.chatImages) tplug.utils.chatImages(data);
             },
             postChat: function (data) {
@@ -231,7 +231,7 @@ var tplug = {
                         $(".cid-" + data.cid).parent().parent().addClass((self.gRole == 5 ? "is-admin" : (self.gRole == 3 ? "is-ambassador" : (self.role ? "is-staff" : (self.sub ? "is-subscriber" : (self.silver ? "is-subscriber silver" : "is-you"))))));
                     }
                 }
-                
+
                 var $c = $("#chat-messages"),
                     scrollH = $c.scrollTop() > $c[0].scrollHeight - $c.height() - 28;
                 if (scrollH) $c.scrollTop($c[0].scrollHeight);
@@ -461,7 +461,7 @@ var tplug = {
 
                 var position = API.getWaitListPosition(target.id);
                 if (position != -1) str += "<span>WaitList Position: </span>" + (position + 1);
-                
+
                 tplug.utils.addChat({
                     type: "whois",
                     message: str,
@@ -560,7 +560,7 @@ var tplug = {
     utils: {
         getUser: function (info) {
             if (typeof info == "undefined" || info == null) return API.getUser();
-                info = (info.charAt(0) == "@" ? info.substr(1) : info);
+            info = (info.charAt(0) == "@" ? info.substr(1) : info);
             var users = API.getUsers().filter(function(user) {
                 if (user.username == info) return user;
                 if (user.username == info.trim()) return user;
@@ -568,7 +568,7 @@ var tplug = {
                 if (user.username.toLowerCase() == info.toLowerCase().trim()) return user;
                 if (user.id == parseInt(info)) return user;
             });
-            
+
             return users[0];
         },
         ajax: function(obj, callback) {
@@ -579,7 +579,7 @@ var tplug = {
                 contentType: obj.data ? "application/json" : undefined,
                 data: obj.data ? JSON.stringify(obj.data) : undefined
             });
-            
+
             if (callback && typeof callback == "function") {
                 req.done(function(data) {callback(null, data);});
                 req.fail(function(jqXHR, textStatus) {
@@ -612,14 +612,14 @@ var tplug = {
         },
         loadEmotes: function () {
             var regex = /{image_id}/, links = {
-                    tp: "https://emotes.tastycat.org/emotes.json",
-                    rcs: "https://code.radiant.dj/require/emotes/radiant_emotes.json",
-                    twitch: "https://twitchemotes.com/api_cache/v2/global.json",
-                    twitchSub: "https://twitchemotes.com/api_cache/v2/subscriber.json"
-                };
-            
+                tp: "https://emotes.tastycat.org/emotes.json",
+                rcs: "https://code.radiant.dj/require/emotes/radiant_emotes.json",
+                twitch: "https://twitchemotes.com/api_cache/v2/global.json",
+                twitchSub: "https://twitchemotes.com/api_cache/v2/subscriber.json"
+            };
+
             if (!tplug.emotes || typeof tplug.emotes != "object") tplug.emotes = {};
-            
+
             tplug.utils.fetchJSON(links.twitchSub, function (err, data) {
                 if (err) tplug.utils.addChat({type: "error", message: "Twitch Sub Emotes could not be loaded.", icon: "chat-system"});
                 else {
@@ -653,7 +653,7 @@ var tplug = {
         },
         fetchJSON: function (url, callback) {
             if (!callback || typeof callback != "function") return;
-            
+
             $.ajax({
                 type: "GET",
                 url: url
@@ -665,13 +665,13 @@ var tplug = {
         },
         replace: function (string, obj) {
             if (typeof obj != "object") return string;
-    
+
             var objectKeys = Object.keys(obj);
-            
+
             objectKeys.forEach(function(key) {
                 string = string.split("%%" + key.toUpperCase() + "%%").join(obj[key]);
             });
-            
+
             return string;
         },
         loadEvents: function () {
@@ -757,44 +757,44 @@ var tplug = {
         chatImages: function (data) {
             if (!tplug.settings.chatImages) return;
             var urls = data.msg.match(/(\b(https?):\/\/[-A-Z0-9+&@#\/%?=~_|!:,.;]*[-A-Z0-9+&@#\/%=~_|]\.(?:jpe?g|gifv?|png|webm|mp4)(?![^\s]))/ig);
-            
+
             /*if (urls && urls.length) {
-                var element;
-                for (var i = 0; i < urls.length; i++) { 
-                    if (urls[i].match(/(\.(?:jpe?g|gif|png)\b)/ig)) {
-                        element = new Image;
-                        element.style.maxWidth = "275px";
-                        element.style.maxHeight = "500px";
-                        element.style.verticalAlign = "top";
-                        element.onload = function () {
-                            tplug.utils.scrollChat();
-                        };
-                        element.src = (urls[i].match(/(\b(https?):\/\/(i\.imgur\.com\/)(.|\n)*?(?:jpe?g|gifv?|png|webm|mp4)\b)/ig) ? urls[i].replace("http:", "https:") : urls[i]);
-                        data.message = data.message.replace(new RegExp(urls[i] + "(?!(\"))", "g"), "<a class=\"tp-image\" href=\"" + urls[i] + "\" target=\"_blank\">" + element.outerHTML + "</a>");
-                        tplug.utils.scrollChat();
-                    } else if (urls[i].match(/(\.(?:gifv|webm|mp4)\b)/ig)) {
-                        element = document.createElement("video");
-                        element.style.maxWidth = "275px";
-                        element.style.maxHeight = "400px";
-                        element.autoplay = true;
-                        element.muted = true;
-                        element.loop = true;
-                        var element2 = document.createElement("source");
-                        element2.type = "video/mp4";
-                        element.onload = function () {
-                            tplug.utils.scrollChat();   
-                        };
-                        if (urls[i].match(urls[i].match(/(\b(https?):\/\/(i\.imgur\.com\/)(.|\n)*?(?:jpe?g|gifv?|png|webm|mp4)\b)/ig))) {
-                            element.poster = urls[i].replace("http:", "https:").replace(".gifv", "h.jpg").replace(".mp4", "h.jpg").replace(".webm", "h.jpg");
-                            element2.src = urls[i].replace("http:", "https:").replace(".gifv", ".mp4").replace(".webm", ".mp4");
-                            element.innerHTML = element2.outerHTML;
-                        } else
-                            element.src = urls[i];
-                        data.message = data.message.replace(new RegExp(urls[i] + "(?!(\"))", "g"), "<a class=\"tp-image\" href=\"" + urls[i] + "\" target=\"_blank\">" + element.outerHTML + "</a>");
-                        tplug.utils.scrollChat();
-                    }
-                }
-            }*/
+             var element;
+             for (var i = 0; i < urls.length; i++) {
+             if (urls[i].match(/(\.(?:jpe?g|gif|png)\b)/ig)) {
+             element = new Image;
+             element.style.maxWidth = "275px";
+             element.style.maxHeight = "500px";
+             element.style.verticalAlign = "top";
+             element.onload = function () {
+             tplug.utils.scrollChat();
+             };
+             element.src = (urls[i].match(/(\b(https?):\/\/(i\.imgur\.com\/)(.|\n)*?(?:jpe?g|gifv?|png|webm|mp4)\b)/ig) ? urls[i].replace("http:", "https:") : urls[i]);
+             data.message = data.message.replace(new RegExp(urls[i] + "(?!(\"))", "g"), "<a class=\"tp-image\" href=\"" + urls[i] + "\" target=\"_blank\">" + element.outerHTML + "</a>");
+             tplug.utils.scrollChat();
+             } else if (urls[i].match(/(\.(?:gifv|webm|mp4)\b)/ig)) {
+             element = document.createElement("video");
+             element.style.maxWidth = "275px";
+             element.style.maxHeight = "400px";
+             element.autoplay = true;
+             element.muted = true;
+             element.loop = true;
+             var element2 = document.createElement("source");
+             element2.type = "video/mp4";
+             element.onload = function () {
+             tplug.utils.scrollChat();
+             };
+             if (urls[i].match(urls[i].match(/(\b(https?):\/\/(i\.imgur\.com\/)(.|\n)*?(?:jpe?g|gifv?|png|webm|mp4)\b)/ig))) {
+             element.poster = urls[i].replace("http:", "https:").replace(".gifv", "h.jpg").replace(".mp4", "h.jpg").replace(".webm", "h.jpg");
+             element2.src = urls[i].replace("http:", "https:").replace(".gifv", ".mp4").replace(".webm", ".mp4");
+             element.innerHTML = element2.outerHTML;
+             } else
+             element.src = urls[i];
+             data.message = data.message.replace(new RegExp(urls[i] + "(?!(\"))", "g"), "<a class=\"tp-image\" href=\"" + urls[i] + "\" target=\"_blank\">" + element.outerHTML + "</a>");
+             tplug.utils.scrollChat();
+             }
+             }
+             }*/
         },
         scrollChat: function (data) {
             var $c = $("#chat-messages"),
@@ -943,14 +943,14 @@ var tplug = {
             var average = 270;
             var remaining = API.getTimeRemaining();
             var position = API.getWaitListPosition();
-            
+
             return (position != -1 ? tplug.utils.ETAstring(average * position++ + remaining) : "");
         },
         ETAstring: function (seconds) {
             var hours = Math.floor((seconds / 60) / 60);
             var minutes = Math.floor((seconds / 60) - (hours * 60));
             var second = Math.floor(seconds - (((hours * 60) + minutes) * 60));
-            
+
             return (hours ? hours + "h" : "") + (minutes ? minutes + "m": "") + (second ? second + "s" : "0s");
         }
     },
@@ -972,7 +972,7 @@ var tplug = {
         load: function (type) {
             // Append the CSS
             if (type && type == "css")
-                return $("head").append("<link id='tp-css' type='text/css' rel='stylesheet' href='" + tplug.baseURL + "css/tp.css'/>");
+                return $("head").append("<link id='tp-css' type='text/css' rel='stylesheet' href='https://cdn.rawgit.com/chippers/b0322215d5b0aa83d77816107e3b9730/raw/972faede331bd9433cb49ec8ef4a7c0fb21d860c/tp.css'/>");
             $("body").append(`
                 <div id="tp-room" style="position: absolute; top: 54px; left: 0"></div>
                 <div id="tplug-ui">
@@ -980,9 +980,9 @@ var tplug = {
                     <div class="tp-menu" style="display: ` + (tplug.settings.visible ? "block" : "none") + `"></div>
                 </div>
             `);
-            
+
             $("#tplug-ui").css(tplug.settings.uiPos);
-            
+
             $(".tp-mainbutton").on({
                 mouseenter: function () {
                     tplug.modules.events.trigger("tooltip:show", "Single click to hide/expand, double click to swap sides.", $(this));
@@ -991,9 +991,9 @@ var tplug = {
                     tplug.modules.events.trigger("tooltip:hide", "Single click to hide/expand, double click to swap sides.", $(this));
                 }
             });
-            
+
             var self = API.getUser();
-            
+
             tplug.ui.elements.forEach(function(element, index) {
                 if (!element.type) return;
                 if (Math.max(self.role, self.gRole) < element.role) return;
@@ -1108,11 +1108,11 @@ var tplug = {
                         break;
                 }
             });
-            
+
             var singleClick = function (e) {
                 tplug.settings.visible = !tplug.settings.visible;
                 tplug.data.save();
-                
+
                 if (!tplug.settings.visible) {
                     $(".tp-menu").slideToggle(400, function () {
                         tplug.ui.savedMenu = $(".tp-menu").detach();
@@ -1122,25 +1122,25 @@ var tplug = {
                     $(".tp-menu").slideToggle();
                 }
             };
-            
+
             var doubleClick = function (e) {
                 var uicont = {
                     width: $('.app-right').position().left,
                     height: $('.app-right').height()
                 };
-                
+
                 if ((uicont.width - 230) == parseInt(tplug.settings.uiPos.left))
                     tplug.settings.uiPos.left = "15px";
                 else
                     tplug.settings.uiPos.left = uicont.width - 230 + "px";
-                    
+
                 $("#tplug-ui").css(tplug.settings.uiPos);
-                
+
                 tplug.modules.events.trigger("tooltip:hide");
-                
+
                 tplug.data.save();
             };
-            
+
             $(".tp-mainbutton").click(function(e) {
                 var that = this;
                 setTimeout(function() {
@@ -1155,14 +1155,14 @@ var tplug = {
                 $(this).data('double', 2);
                 doubleClick.call(this, e);
             });
-            
+
             $(window).on("resize", tplug.ui.resize);
-            
+
             if (!tplug.settings.visible)
                 tplug.ui.savedMenu = $(".tp-menu").detach();
-                
+
             $('#waitlist-button').append("<span class=\"tp-eta\" style=\"bottom:2px;left:45px;font-size:9px\"></span>");
-            
+
             tplug.etaUpdate = setInterval(function() {
                 $(".tp-eta").text(tplug.utils.calculateETA());
             }, 1e3);
@@ -1198,18 +1198,18 @@ var tplug = {
                 "role":     0,
                 onClick: function (node, el) {
                     tplug.settings.autoWoot = !tplug.settings.autoWoot;
-                    
+
                     var dj = API.getDJ(),
                         self = API.getUser(),
                         _el = $("#tplug-ui ." + el.id);
-                    
+
                     if (tplug.settings.autoWoot) {
                         if (!self.vote && dj && dj.id != self.id)
                             $("#woot").click();
                         _el.addClass("enabled");
                     } else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1223,15 +1223,15 @@ var tplug = {
                 "role":     0,
                 onClick: function (node, el) {
                     tplug.settings.autoJoin = !tplug.settings.autoJoin;
-                    
+
                     var _el = $("#tplug-ui .tp-menu ." + el.id);
-                    
+
                     if (tplug.settings.autoJoin) {
                         tplug.utils.autoJoinCheck();
                         _el.addClass("enabled");
                     } else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1245,16 +1245,16 @@ var tplug = {
                 "role":     0,
                 onClick: function (node, el) {
                     tplug.settings.hideVideo = !tplug.settings.hideVideo;
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     tplug.utils.hideVideo();
-                    
+
                     if (tplug.settings.hideVideo) {
                         _el.addClass("enabled");
                     } else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1269,16 +1269,16 @@ var tplug = {
                 "tooltip":  undefined,
                 onClick: function (node, el) {
                     tplug.settings.legacyChat = !tplug.settings.legacyChat;
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     if (tplug.settings.legacyChat)
                         _el.addClass("enabled");
                     else
                         _el.removeClass("enabled");
-                        
+
                     tplug.utils.legacyChat.toggle(tplug.settings.legacyChat);
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1295,14 +1295,14 @@ var tplug = {
                 "role":     0,
                 onClick: function (node, el) {
                     tplug.settings.boothAlert = !tplug.settings.boothAlert;
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     if (tplug.settings.boothAlert)
                         _el.addClass("enabled");
                     else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1319,14 +1319,14 @@ var tplug = {
                 "role":     2,
                 onClick: function (node, el) {
                     tplug.settings.historyAlert = !tplug.settings.historyAlert;
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     if (tplug.settings.historyAlert)
                         _el.addClass("enabled");
                     else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1343,14 +1343,14 @@ var tplug = {
                 "role":     2,
                 onClick: function (node, el) {
                     tplug.settings.mehTracker = !tplug.settings.mehTracker;
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     if (tplug.settings.mehTracker)
                         _el.addClass("enabled");
                     else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1364,14 +1364,14 @@ var tplug = {
                 "role":     0,
                 onClick: function (node, el) {
                     tplug.settings.chatImages = !tplug.settings.chatImages;
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     if (tplug.settings.chatImages)
                         _el.addClass("enabled");
                     else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1388,14 +1388,14 @@ var tplug = {
                 "role":     0,
                 onClick: function (node, el) {
                     tplug.settings.customEmotes = !tplug.settings.customEmotes;
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     if (tplug.settings.customEmotes)
                         _el.addClass("enabled");
                     else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1469,14 +1469,14 @@ var tplug = {
                 },
                 onClick: function (node, el) {
                     tplug.settings.chatMentions.enabled = !tplug.settings.chatMentions.enabled;
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     if (tplug.settings.chatMentions.enabled)
                         _el.addClass("enabled");
                     else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1493,14 +1493,14 @@ var tplug = {
                 "role":     0,
                 onClick: function (node, el) {
                     tplug.settings.joinNotifications.enabled = !tplug.settings.joinNotifications.enabled;
-                    
+
                     var _el = $("#tplug-ui ." + el.id + ".toggle");
-                    
+
                     if (tplug.settings.joinNotifications.enabled)
                         _el.addClass("enabled");
                     else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1518,14 +1518,14 @@ var tplug = {
                 "role":     0,
                 onClick: function (node, el) {
                     tplug.settings.joinNotifications.ranks = !tplug.settings.joinNotifications.ranks;
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     if (tplug.settings.joinNotifications.ranks)
                         _el.addClass("enabled");
                     else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1540,14 +1540,14 @@ var tplug = {
                 "role":     0,
                 onClick: function (node, el) {
                     tplug.settings.joinNotifications.friends = !tplug.settings.joinNotifications.friends;
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     if (tplug.settings.joinNotifications.friends)
                         _el.addClass("enabled");
                     else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1562,14 +1562,14 @@ var tplug = {
                 "role":     2,
                 onClick: function (node, el) {
                     tplug.settings.joinNotifications.levelOnes = !tplug.settings.joinNotifications.levelOnes;
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     if (tplug.settings.joinNotifications.levelOnes)
                         _el.addClass("enabled");
                     else
                         _el.removeClass("enabled");
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1583,16 +1583,16 @@ var tplug = {
                 "role":     0,
                 onClick: function (node, el) {
                     tplug.settings.tastyMojis.enabled = !tplug.settings.tastyMojis.enabled;
-                    
+
                     var _el = $("#tplug-ui .toggle." + el.id);
-                    
+
                     if (tplug.settings.tastyMojis.enabled)
                         _el.addClass("enabled");
                     else
                         _el.removeClass("enabled");
-                        
+
                     tplug.utils.tastyMojis();
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1611,15 +1611,15 @@ var tplug = {
                 "tooltip":  undefined,
                 onClick: function (node, el) {
                     tplug.settings.tastyMojis.type = "ios";
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     $(".submenu." + el.parent).find(".enabled").removeClass("enabled");
-                    
+
                     _el.addClass("enabled");
-                        
+
                     tplug.utils.tastyMojis();
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1635,15 +1635,15 @@ var tplug = {
                 "tooltip":  undefined,
                 onClick: function (node, el) {
                     tplug.settings.tastyMojis.type = "twitter";
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     $(".submenu." + el.parent).find(".enabled").removeClass("enabled");
-                    
+
                     _el.addClass("enabled");
-                        
+
                     tplug.utils.tastyMojis();
-                    
+
                     tplug.data.save();
                 },
                 isEnabled: function () {
@@ -1658,13 +1658,13 @@ var tplug = {
                 "role":     0,
                 onClick: function (node, el) {
                     tplug.settings.tastyMojis.type = "emojione";
-                    
+
                     var _el = $("#tplug-ui ." + el.id);
-                    
+
                     $(".submenu." + el.parent).find(".enabled").removeClass("enabled");
-                    
+
                     _el.addClass("enabled");
-                        
+
                     tplug.utils.tastyMojis();
                 },
                 isEnabled: function () {
@@ -1684,17 +1684,17 @@ var tplug = {
                 width: $(".app-right").position().left,
                 height: $(".app-right").height()
             };
-            
+
             if (parseInt(tplug.settings.uiPos.left) != 15) tplug.settings.uiPos.left = uicont.width - 230 + "px";
-                
+
             $("#tplug-ui").css(tplug.settings.uiPos);
-            
+
             tplug.data.save();
         }
     },
     modules: {
         _array: [],
-        require: require.s.contexts._.defined,
+        require: window.require.s.contexts._.defined,
         media: null,
         events: null,
         booth: null,
@@ -1744,34 +1744,34 @@ var tplug = {
             message: "v" + tplug.version + " now running!",
             special: true
         });
-        
+
         if (typeof API._dispatch === "undefined") {
             API._dispatch = API.dispatch;
-            
+
             API.dispatch = function(t, n) {
                 API.trigger("_" + t, n);
                 API._dispatch(t, n);
             };
         }
         console.timeEnd("Tastyplug Load Time");
-        
+
         var dj = API.getDJ();
         var self = API.getUser();
         if (tplug.settings.autoWoot && dj && dj.id != self.id && !self.vote)
             $("#woot").click();
-            
+
         if (tplug.settings.autoJoin)
             tplug.utils.autoJoinCheck();
-            
+
         if (tplug.settings.hideVideo)
             tplug.utils.hideVideo();
-            
+
         if (tplug.settings.tastyMojis.enabled)
             tplug.utils.tastyMojis();
-            
+
         if (tplug.settings.legacyChat)
             tplug.utils.legacyChat.toggle(true);
-            
+
         window.tastyPlugShutDown = window.tplug.shutdown;
     },
     shutdown: function (message) {
@@ -1788,7 +1788,7 @@ var tplug = {
         tplug.ui.unload("css");
         // save the data
         tplug.data.save();
-        
+
         // remove spam
         $(".cm.tp").remove();
         var _logs = $(".log");
@@ -1798,12 +1798,12 @@ var tplug = {
             if (_text == "tastyPlug shut down!")
                 _e.remove();
         }
-        
+
         // :sob:
         API.chatLog("tastyPlug shut down!");
-        
+
         tplug = undefined;
         delete window.tastyPlugShutDown;
     }
 };
-tplug.startup();
+window.tplug.startup();
