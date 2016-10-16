@@ -840,20 +840,19 @@ window.tplug = {
         },
         // Original legacy chat author: @git
         legacyChat: (function() {
-            const url = 'https://cdn.rawgit.com/chippers/b0322215d5b0aa83d77816107e3b9730/raw/bde18243250253774691e976f5eabf35ac4287c2/legacy_chat.css';
-            var class_name = 'tastyplug_legacy_chat';
             var run = false;
+
             // Calling it with bool parameter also sets legacy mode bool
             var toggle = function(input) {
                 run = (input !== undefined) ? input : !run;
 
                 if (run) {
                     // add the stylesheet if it's not already there
-                    if ($(`style.${class_name}`).length === 0) {
-                        $('head').append(`<link class="${class_name}" rel="stylesheet" type="text/css" href="${url}">`);
+                    if ($('style.tastyplug_legacy_chat').length === 0) {
+                        $('head').append(`<link class="tastyplug_legacy_chat" rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/chippers/b0322215d5b0aa83d77816107e3b9730/raw/bde18243250253774691e976f5eabf35ac4287c2/legacy_chat.css">`);
                     }
                 } else {
-                    $(`style.${class_name}`).remove();
+                    $('style.tastyplug_legacy_chat').remove();
                 }
                 // Smooth scroll to bottom of chat div in case you're left high and dry in chat.
                 //$('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
