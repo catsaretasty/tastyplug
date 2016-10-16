@@ -840,100 +840,23 @@ window.tplug = {
         },
         // Original legacy chat author: @git
         legacyChat: (function() {
-            "use strict";
-            var legacyChatStylesheet = "div#chat-messages div.cm.legacy-chat{min-height:0;width:auto}div#chat div.cm.legacy-chat.mention{background:#0a0a0a}div#chat div.cm.legacy-chat.mention:nth-child(2n+1){background:#111317}div#chat-messages div.legacy-chat div.badge-box{height:0;overflow:hidden;position:absolute}#chat-messages div.from.pm span.pm-header{padding:0;color:#FF00CB}#chat-messages div.legacy-chat i.icon{margin:6px}#chat-messages div.legacy-chat i.icon.icon-tp-pm{margin:0}#chat-messages div.legacy-chat.is-admin{border-left:3px solid #42a5dc}#chat-messages div.legacy-chat.is-ambassador{border-left:3px solid #89be6c}#chat-messages div.legacy-chat.is-staff,#chat-messages div.legacy-chat.is-dj{border-left:3px solid #ac76ff}#chat-messages div.legacy-chat.is-you{border-left:3px solid #ffdd6f}#chat-messages div.legacy-chat.is-pm{border-left:3px solid #FF00CB}#chat-messages div.legacy-chat div.msg{padding:4px 5px 5px 27px}div.legacy-chat div.msg div.from span.un{padding-right:3px}#chat-messages div.text{display:inline}#chat-messages .legacy-chat div.text:before{content:' '}div.legacy-chat.mention div.msg div.from div.text,div.legacy-chat.message div.msg div.from div.text{color:#eee}div.legacy-chat div.msg div.from:before{content:'';float:right;width:50px;height:1px}#chat-messages div.legacy-chat div.msg div.from span.timestamp{position:absolute;right:0;top:1px;float:right}.tastyplug-message.legacy-chat span.un{display:none}#chat-messages div.mention.legacy-chat i.icon,#chat-messages div.mention.legacy-chat i.icon.icon-tp-pm{left:-2px}#chat-messages div.mention div.msg{padding-left:24px}#chat-messages .legacy-chat .delete-button{padding:1px 7px}#chat-messages .tastyplug-pm.mention i.icon.icon-tp-pm.legacy-fake-icon{left:1px}#chat-messages i.icon.icon-tp-pm.legacy-fake-icon{left:4px}",
-                legacyChatFile = '<style id="legacy-chat-stylesheet" type="text/css">' + legacyChatStylesheet + '</style>',
-                toHideBadges = false;
-            $('head').append(legacyChatFile);
-            var convertToLegacy = function(node) {
-                node.addClass("legacy-chat");
-                var badge = node.find("div.badge-box"),
-                    message = node.find("div.msg"),
-                    messageData = message.find("div.from"),
-                    icon = messageData.children("i.icon"),
-                    messageText = message.find("div.text"),
-                    messageTime = messageData.find("span.timestamp"),
-                    messageUser = messageData.find("span.un");
-
-                icon.hide();
-                if(message.children("div.subscriber")[0]) {
-                    icon = $('<i class="icon icon-chat-subscriber legacy-fake-icon"></i>');
-
-                    icon.insertAfter(badge);
-                } else if(message.children("div.staff, div.dj")[0]) {
-                    var staffIcon = icon.last().clone();
-                    staffIcon.addClass("legacy-fake-icon");
-                    staffIcon.insertAfter(badge);
-                    staffIcon.show();
-                } else if(message.children("div.you")[0]){
-                    var baIcon = icon.filter(".icon-chat-ambassador");
-                    var legacyIcon = baIcon.length ? baIcon : icon.last();
-                    icon.not(legacyIcon).hide();
-                    legacyIcon.insertAfter(badge);
-                    legacyIcon.show();
-                } else if(message.children("div.ambassador")[0]) {
-                    icon = $('<i class="icon icon-chat-ambassador legacy-fake-icon"></i>');
-                    icon.insertAfter(badge);
-                } else if(message.children("div.from.pm")[0]) {
-                    icon = $('<i class="icon icon-tp-pm legacy-fake-icon"></i>');
-                    icon.insertAfter(badge);
-                } else if(message.children("div.admin")[0]) {
-                    icon = $('<i class="icon icon-chat-admin legacy-fake-icon"></i>')
-                    icon.insertAfter(badge);
-                }
-                messageText.insertAfter(messageUser);
-            };
-
-            var convertFromLegacy = function(node) {
-                var message = node.find("div.msg"),
-                    messageData = message.find("div.from"),
-                    messageUser = messageData.find("span.un"),
-                    messageText = message.find("div.text"),
-                    messageTime = message.find("span.timestamp"),
-                    icon = node.children("i.icon:not(.legacy-fake-icon)");
-                if(icon.length) {
-                    messageData.prepend(icon);
-                }
-                messageData.children().show();
-                messageText.insertAfter(messageData);
-                node.removeClass("legacy-chat");
-            };
-
-            var legacyChatObserver = new MutationObserver(function(mutations) {
-                mutations.forEach(function(mutation) {
-                    if(toHideBadges){
-                        var nodes = mutation.addedNodes,
-                            i = 0;
-                        for (i = 0; i < nodes.length; ++i) {
-                            if (nodes[i].nodeType === Node.ELEMENT_NODE) {
-                                convertToLegacy($(nodes[i]).find('*').andSelf().filter("div.cm:not(.legacy-chat,.welcome,.update,.tp,.rsshit)"));
-                            }
-                        }
-                    }
-                });
-            });
-
+            const url = 'https://cdn.rawgit.com/chippers/b0322215d5b0aa83d77816107e3b9730/raw/bde18243250253774691e976f5eabf35ac4287c2/legacy_chat.css';
+            var class_name = 'tastyplug_legacy_chat';
+            var run = false;
             // Calling it with bool parameter also sets legacy mode bool
-            var toggle = function(on) {
-                toHideBadges = (on !== undefined) ? on : !toHideBadges;
+            var toggle = function(input) {
+                run = (input !== undefined) ? input : !run;
 
-                if(toHideBadges) {
-                    // Convert regular chat to legacy chat
-                    var target = document.querySelector("#chat-messages");
-                    legacyChatObserver.observe(target, {childList:true});
-                    $("#chat-messages div.cm:not(.legacy-chat,.welcome,.update)").each(function() {
-                        convertToLegacy($(this));
-                    });
+                if (run) {
+                    // add the stylesheet if it's not already there
+                    if ($(`style.${class_name}`).length === 0) {
+                        $('head').append(`<link class="${class_name}" rel="stylesheet" type="text/css" href="${url}">`);
+                    }
                 } else {
-                    // Conveting legacy chat to regular chat
-                    legacyChatObserver.disconnect();
-                    $("div.legacy-chat").each(function() {
-                        convertFromLegacy($(this));
-                    });
-                    $("i.legacy-fake-icon").remove();
+                    $(`style.${class_name}`).remove();
                 }
                 // Smooth scroll to bottom of chat div in case you're left high and dry in chat.
-                $('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
+                //$('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
             };
 
             return {toggle: toggle};

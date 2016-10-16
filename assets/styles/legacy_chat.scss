@@ -1,0 +1,87 @@
+#chat {
+  div.message {
+    min-height: 0;
+
+    div.badge-box {
+      display: none;
+    }
+    div.from > span.un:first-child {
+      padding-left: 15px;
+    }
+  }
+
+  div.moderation, div.user-action {
+    div.badge-box {
+      width: auto;
+      min-width: 15px;
+
+      height: auto;
+      min-height: 15px;
+
+      margin: 0;
+      padding: 6px 0 6px 6px;
+
+      background: 0 0;
+
+      i%smaller {
+        -webkit-transform: scale(.8, .8);
+        -moz-transform: scale(.8, .8);
+        -ms-transform: scale(.8, .8);
+        -o-transform: scale(.8, .8);
+        transform: scale(.8, .8);
+      }
+
+      i.icon-skip {
+        margin-left: -3px;
+        @extend %smaller;
+      }
+
+      i.icon-gift {
+        margin-left: -8px;
+        @extend %smaller;
+      }
+    }
+  }
+
+  div.moderation, div.user-action, div.message {
+    div.msg {
+      padding: 6px;
+    }
+  }
+
+  div.from {
+    margin-bottom: 0;
+
+    i.icon {
+      margin-right: 0;
+    }
+
+    span.un {
+      float: left;
+      margin: 0 4px;
+    }
+
+    span.timestamp {
+      margin-left: 10px;
+    }
+  }
+
+  // Show only a single icon, preferring the highest-ranking one
+  div.admin {
+    i:not(.icon-chat-admin) {
+      display: none;
+    }
+  }
+
+  div.ambassador {
+    i:not(.icon-chat-ambassador) {
+      display: none;
+    }
+  }
+
+  div.staff {
+    i:not(.icon-chat-host):not(.icon-chat-cohost):not(.icon-chat-manager):not(.icon-chat-bouncer):not(.icon-chat-dj) {
+      display: none;
+    }
+  }
+}
