@@ -1,8 +1,8 @@
 // if its already running, shut down, then run.
 if (typeof window.tastyPlugShutDown != "undefined" || typeof window.tplug != "undefined") window.tastyPlugShutDown();
 window.tplug = {
-    version: "4.0.0",
-    baseURL: "https://tastyplug.tastycat.org/",
+    version: "<%= version %>",
+    baseURL: "<%= tastyplug_base_url %>",
     settings: {
         visible: true,
         autoWoot: true,
@@ -1663,7 +1663,7 @@ window.tplug = {
         // Cool msg
         tplug.utils.addChat({
             type: "startup",
-            message: "v" + tplug.version + " now running!",
+            message: "v" + tplug.version + " <%= version_title =>",
             special: true
         });
 
