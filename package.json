@@ -6,7 +6,7 @@
   "version": "4.0.0",
   "description": "a plug.dj extension",
   "scripts": {
-    "sign": "./node_modules/web-ext/bin/web-ext sign --api-key user:12335406:167 --api-secret ${TASTYPLUG_AMO_SECRET} --source-dir build/extension --artifacts-dir build/dist",
+    "sign": "./node_modules/web-ext/bin/web-ext sign --api-key user:12335406:167 --api-secret ${TASTYPLUG_AMO_SECRET} --source-dir dist/ --artifacts-dir dist/",
     "build": "./node_modules/gulp/bin/gulp.js",
     "deploy": "./deploy.sh",
     "release": ". ./secrets.sh && npm run build && npm run deploy && npm run sign"
@@ -21,18 +21,18 @@
     "url": "https://github.com/catsaretasty/tastyplug/issues"
   },
   "homepage": "https://github.com/catsaretasty/tastyplug#readme",
-  "devDependencies": {
+  "dependencies": {
     "almond": "^0.3.3",
     "babel-plugin-transform-es2015-modules-amd": "^6.8.0",
     "bluebird": "^3.3.4",
     "del": "^2.2.0",
     "gulp": "^3.9.1",
     "gulp-babel": "^6.1.2",
-    "gulp-beautify": "^2.0.0",
     "gulp-clean-css": "^2.0.9",
     "gulp-concat": "^2.6.0",
     "gulp-debug": "^2.1.2",
     "gulp-jade": "^1.1.0",
+    "gulp-jsbeautifier": "^2.0.3",
     "gulp-rename": "^1.2.2",
     "gulp-replace": "^0.5.4",
     "gulp-sass": "^2.3.2",

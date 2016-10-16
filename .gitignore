@@ -1,6 +1,7 @@
 # pls no
 node_modules/
 public/
+dist/
 
 # secrets
 secrets.sh
