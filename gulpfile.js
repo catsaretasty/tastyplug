@@ -16,6 +16,7 @@ const jade = require('gulp-jade');
 const cleanCSS = require('gulp-clean-css');
 const babel = require('gulp-babel');
 const requirejs = require('requirejs');
+const sass = require('gulp-sass');
 
 gulp.task('clean-dirs', ['clean-public']);
 gulp.task('clean-public', cb => fs.removeAsync('public'));
@@ -46,9 +47,17 @@ gulp.task('build:compile', ['build:transform'], () => {
     })
 });
 
-gulp.task('build:assets', () => {
-    return gulp.src('assets/**')
+gulp.task('build:assets', ['build:assets:static', 'build:assets:sass']);
+
+gulp.task('build:assets:static', () => {
+    return gulp.src(['assets/**/*', '!assets/**/*.scss'])
         .pipe(gulp.dest('public/'));
+});
+
+gulp.task('build:assets:sass', () => {
+    return gulp.src('assets/**/*.scss')
+        .pipe(sass().on('error', sass.logError))
+        .pipe(gulp.dest('public/'))
 });
 
 gulp.task('build', ['build:compile', 'build:assets'], cb => fs.removeAsync('_build'));
