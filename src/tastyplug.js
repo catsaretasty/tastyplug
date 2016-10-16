@@ -849,7 +849,7 @@ window.tplug = {
                 if (run) {
                     // add the stylesheet if it's not already there
                     if ($('.tastyplug_legacy_chat').length === 0) {
-                        $('head').append(`<link class="tastyplug_legacy_chat" rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/chippers/b0322215d5b0aa83d77816107e3b9730/raw/bde18243250253774691e976f5eabf35ac4287c2/legacy_chat.css">`);
+                        $('head').append(`<link class="tastyplug_legacy_chat" rel="stylesheet" type="text/css" href="${tplug.baseURL}/styles/legacy_chat.min.css">`);
                     }
                 } else {
                     $('.tastyplug_legacy_chat').remove();
@@ -894,7 +894,7 @@ window.tplug = {
         load: function (type) {
             // Append the CSS
             if (type && type == "css")
-                return $("head").append("<link id='tp-css' type='text/css' rel='stylesheet' href='https://cdn.rawgit.com/chippers/b0322215d5b0aa83d77816107e3b9730/raw/972faede331bd9433cb49ec8ef4a7c0fb21d860c/tp.css'/>");
+                return $("head").append("<link id='tp-css' type='text/css' rel='stylesheet' href='${tplug.baseURL}/styles/tastyplug.min.css'/>");
             $("body").append(`
                 <div id="tp-room" style="position: absolute; top: 54px; left: 0"></div>
                 <div id="tplug-ui">
