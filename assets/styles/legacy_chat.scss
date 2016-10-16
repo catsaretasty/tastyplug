@@ -1,13 +1,40 @@
+$smallest_message_height: 28px;
+
+%hide {
+  visibility: hidden;
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+}
+
 #chat {
-  div.message {
-    min-height: 0;
+  div.message, div.emote, div.mention {
+    min-height: $smallest_message_height;
 
     div.badge-box {
-      display: none;
+      @extend %hide;
     }
     div.from > span.un:first-child {
       padding-left: 15px;
     }
+  }
+
+  div.delete-button {
+    $delete-margin: 5px;
+    $delete-height: $smallest_message_height - ($delete-margin * 2);
+
+    // Move button away from sides of message and add left-right padding
+    margin: $delete-margin;
+    padding: 0 5px;
+
+    // Make 'delete' text vertically centered
+    height: $delete-height;
+    line-height: $delete-height;
+
+    // Clear plug's way of aligning the delete button
+    top: 0;
+    right: 0;
   }
 
   div.moderation, div.user-action {
@@ -40,24 +67,47 @@
         margin-left: -8px;
         @extend %smaller;
       }
+
+      i.icon-unlocked-grey, i.icon-locked-grey {
+        margin-left: -8px;
+        @extend %smaller;
+      }
+
+      i.icon-join-waitlist {
+        margin-left: -9px;
+        margin-top: -6px;
+        @extend %smaller;
+      }
+
+      i.icon-mute {
+        @extend %smaller;
+      }
+
+      i.icon-ban {
+        margin-left: -4px;
+        @extend %smaller;
+      }
     }
   }
 
-  div.moderation, div.user-action, div.message {
+  div.moderation, div.user-action, div.message, div.emote, div.mention {
     div.msg {
       padding: 6px;
     }
   }
 
+  div.text {
+    display: inline;
+  }
+
   div.from {
-    margin-bottom: 0;
+    display: inline;
 
     i.icon {
       margin-right: 0;
     }
 
     span.un {
-      float: left;
       margin: 0 4px;
     }
 
@@ -69,19 +119,19 @@
   // Show only a single icon, preferring the highest-ranking one
   div.admin {
     i:not(.icon-chat-admin) {
-      display: none;
+      @extend %hide;
     }
   }
 
   div.ambassador {
     i:not(.icon-chat-ambassador) {
-      display: none;
+      @extend %hide;
     }
   }
 
   div.staff {
     i:not(.icon-chat-host):not(.icon-chat-cohost):not(.icon-chat-manager):not(.icon-chat-bouncer):not(.icon-chat-dj) {
-      display: none;
+      @extend %hide;
     }
   }
 }

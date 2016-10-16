@@ -848,11 +848,11 @@ window.tplug = {
 
                 if (run) {
                     // add the stylesheet if it's not already there
-                    if ($('style.tastyplug_legacy_chat').length === 0) {
+                    if ($('.tastyplug_legacy_chat').length === 0) {
                         $('head').append(`<link class="tastyplug_legacy_chat" rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/chippers/b0322215d5b0aa83d77816107e3b9730/raw/bde18243250253774691e976f5eabf35ac4287c2/legacy_chat.css">`);
                     }
                 } else {
-                    $('style.tastyplug_legacy_chat').remove();
+                    $('.tastyplug_legacy_chat').remove();
                 }
                 // Smooth scroll to bottom of chat div in case you're left high and dry in chat.
                 //$('#chat-messages').scrollTop($('#chat-messages')[0].scrollHeight);
