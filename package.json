@@ -1,7 +1,7 @@
 {
   "name": "tastyplug",
   "display_name": "TastyPlug",
-  "tastyplug_base_url": "https://tastyplug.tastycat.org/",
+  "tastyplug_base_url": "https://tastyplug.tastycat.org",
   "version_title": "has become a little less dead.",
   "version": "4.0.0",
   "description": "a plug.dj extension",
