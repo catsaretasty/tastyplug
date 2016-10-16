@@ -34,20 +34,33 @@ gulp.task('build:transform', () => {
             moduleIds: true,
             ignore: "vendor/"
         }))
-
         .pipe(gulp.dest('_build'));
 });
 
-gulp.task('build:compile', ['build:transform'], () => {
+gulp.task('build:bundle', ['build:transform'], cb => {
     rjs.optimize({
         baseUrl: './_build',
         name: '../node_modules/almond/almond',
         include: 'tastyplug',
         insertRequire: ['tastyplug'],
         optimize:'none',
-        out: 'public/tastyplug.js',
         wrap: true,
-    })
+        out(tastyplug) {
+            fs.writeFileAsync('public/tastyplug.js', tastyplug)
+                .then(cb)
+                .catch(e => {
+                    console.error('Can\'t write tastyplug file.');
+                    console.error(e.stack);
+                    process.exit(1);
+                });
+        }
+    });
+});
+
+gulp.task('build:compile', ['build:bundle'], () => {
+    gulp.src('public/tastyplug.js')
+        .pipe(template(pkg))
+        .pipe(gulp.dest('public/'))
 });
 
 gulp.task('build:assets', ['build:assets:static', 'build:assets:sass']);
@@ -73,7 +86,7 @@ gulp.task('beautify', () => {
 });
 
 
-gulp.task('minify', [/*'minify:js',*/ 'minify:css']);
+gulp.task('minify', ['minify:js', 'minify:css']);
 gulp.task('minify:js', () => {
     return gulp.src('public/**/*.js')
         .pipe(uglify())
@@ -98,7 +111,7 @@ gulp.task('userscript-meta', () => {
 });
 
 gulp.task('userscript-user', () => {
-    return gulp.src(['extensions/userscript/tastyplug.meta.js', 'public/tastyplug.js'])
+    return gulp.src(['extensions/userscript/tastyplug.meta.js', 'public/tastyplug.min.js'])
         .pipe(template(pkg))
         .pipe(concat('tastyplug.user.js'))
         .pipe(gulp.dest('public/'));
