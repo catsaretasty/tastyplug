@@ -72,6 +72,7 @@ gulp.task('build:assets:static', () => {
 
 gulp.task('build:assets:sass', () => {
     return gulp.src('assets/**/*.scss')
+        .pipe(template(pkg))
         .pipe(sass().on('error', sass.logError))
         .pipe(gulp.dest('public/'))
 });
