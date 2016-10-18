@@ -874,7 +874,7 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
             if (!em) return txt;
             for (var i = 0; i < em.length; i++) {
                 var emlow = em[i].substring(1, em[i].length-1).toLowerCase();
-                if (keys.indexOf(emlow)) {
+                if (keys.indexOf(emlow) != -1) {
                     var msg = txt.split(em[i]), res = msg[0];
                     for (var k = 1; k < msg.length; k++) {
                         res += '<img class="tp-emote" title="' + emlow + '" src="' + emotes[emlow] + '" />';
