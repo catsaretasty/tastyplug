@@ -27,7 +27,7 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
         drag = false,
         hidevideo = false,
         joincd = false,
-        version = '3.9.1',
+        version = '3.9.2',
         commands = {},
         tos = {},
         boothcd = false,
@@ -96,8 +96,8 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
         }
         legacyChat.toggle(settings.legacychat);
         tastyMojis.toggle();
-        Chat('init', 'TastyPlug v' + version + ' now rising from the dead.');
-        console.log('[TastyPlug v' + version + '] now rising from the dead.');
+        Chat('init', 'TastyPlug v' + version + ' now with dank emotes!');
+        console.log('[TastyPlug v' + version + '] now with dank emotes!');
     };
 
     function loadSettings() {
@@ -964,7 +964,7 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
         if (!em) return txt;
         for (var i = 0; i < em.length; i++) {
             var emlow = em[i].substring(1, em[i].length - 1).toLowerCase();
-            if (keys.indexOf(emlow)) {
+            if (keys.indexOf(emlow) != -1) {
                 var msg = txt.split(em[i]),
                     res = msg[0];
                 for (var k = 1; k < msg.length; k++) {
