@@ -27,7 +27,7 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
         drag = false,
         hidevideo = false,
         joincd = false,
-        version = '3.9.0',
+        version = '3.9.1',
         commands = {},
         tos = {},
         boothcd = false,
@@ -187,7 +187,8 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
                 saveSettings();
             }
         };
-        if (typeof $.draggable != "undefined") $('#tastyplug-ui').draggable(dragopts);
+        var tplugUI = $('#tastyplug-ui');
+        if (typeof tplugUI.draggable != "undefined") tplugUI.draggable(dragopts);
         //hover over song title
         $('#now-playing-media').hover(
             function() {
