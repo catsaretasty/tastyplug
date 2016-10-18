@@ -103,7 +103,7 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
     };
 
     function loadUI() {
-        $('head').append('<style type=text/css id=tastyplug-css>#tastyplug-ui{-moz-user-select:none;-webkit-user-select:none;position:absolute;width:150px;border-radius:10px;background-color:#1C1F25;background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0,#1C1F25),color-stop(1,#282D33));background-image:-o-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:-moz-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:-webkit-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:-ms-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:linear-gradient(to top,#1C1F25 0,#282D33 100%);z-index:9;padding-bottom:1.5px;color:#DDD}#tastyplug-ui a{color:inherit;text-decoration:none}.tastyplug-icon{position:relative;float:right}#tastyplug-ui .tp-toggle{color:#F04F30}#tastyplug-ui .tp-toggle.button-on{color:#1CC7ED}#tp-title{margin:0 15px;padding:3px 0;color:#A874FC;font-size:19px;cursor:move}.tp-mainbutton,.tp-secbutton{margin:0 15px;padding:2px 0 3px;font-size:15px;border-top:1px solid rgba(56,60,68,.85);cursor:pointer}.tp-highlight{background-color:rgba(168,116,252,.33)}.tp-secbutton{padding-left:8px}#tastyplug-ui .icon-drag-handle{position:relative;float:right;top:3px;height:14px;width:14px;background-position:-183px -113px}#waitlist-button .eta{left:45px;font-size:10px}#chat-messages .tastyplug-pm .icon{left:5.5px;top:6px}#chat-pm-button{left:-3px}#chat-messages div.tastyplug-pm.mention{background:linear-gradient(135deg,#FF00CB 0,#0a0a0a 13%,#0a0a0a 100%)}#chat-messages div.tastyplug-pm.mention:nth-child(2n+1){background:linear-gradient(135deg,#FF00CB 0,#111317 13%,#111317 100%)}#chat div[class*=" tp-"],#chat div[class^=tp-]{background-color:#0a0a0a}#chat div[class*=" tp-"]:nth-child(2n+1),#chat div[class^=tp-]:nth-child(2n+1){background-color:#111317}#chat-messages .tastyplug-pm .msg .from span.un{color:#FF00CB;font-weight:700}#user-lists .list.room .user .icon-meh{left:auto;right:8px;top:-1px}#chat-messages [data-cid|="3946454"]{background-color:#2D002D}#chat .mention:nth-child(2n+1)[data-cid|="3946454"],#chat .message:nth-child(2n+1)[data-cid|="3946454"],#chat-messages .emote:nth-child(2n+1)[data-cid|="3946454"]{background-color:#240024}#chat .emote[data-cid|="3946454"] .text,#chat .mention[data-cid|="3946454"] .text,#chat .message[data-cid|="3946454"] .text{font-weight:700;color:#CFCFCF}#chat .emote[data-cid|="3946454"] .text{font-style:normal}div.badge-box img.tastyplug-icon{padding:2px}#chat .cm.tp-info .text,#chat .cm.tp-info div.from.tastyplug span.un{color:#1CC7ED}#chat .cm.tp-info .text span{color:#EEE}#chat .cm.tp-error .text,#chat .cm.tp-error div.from.tastyplug span.un{color:#C42E3B}#chat .cm.tp-init .text,#chat .cm.tp-init div.from.tastyplug span.un{color:#D1D119}#chat .cm.tp-join-admin .text,#chat .cm.tp-join-admin div.from.tastyplug span.un{color:#1CC7ED}#chat .cm.tp-join-ba .text,#chat .cm.tp-join-ba div.from.tastyplug span.un{color:#088C30}#chat .cm.tp-join-host .text,#chat .cm.tp-join-host div.from.tastyplug span.un{color:#D1D119}#chat .cm.tp-join-cohost .text,#chat .cm.tp-join-cohost div.from.tastyplug span.un{color:#F59425}#chat .cm.tp-join-staff .text,#chat .cm.tp-join-staff div.from.tastyplug span.un{color:#C322E3}#chat .cm.tp-join-friend .text,#chat .cm.tp-join-friend div.from.tastyplug span.un{color:#009CDD}#chat .cm.tp-join-lvl1 .text,#chat .cm.tp-join-lvl1 div.from.tastyplug span.un{color:#FFDD6F}.tp-img{width:auto;height:auto;max-width:270px;max-height:250px}.legacy-chat .tastyplug-img-delete{top:26px}.tastyplug-img-delete{position:absolute;top:42px;right:4px;background-color:#F04F30;padding:0 3px;cursor:pointer;z-index:1}#playback .tp-video-hide,#playback.tp-video-hide{height:0!important}.custom-emote{display:inline-block;vertical-align:top}.custom-emote-mid{display:inline-block;vertical-align:middle}#chat-messages [data-cid|="3946454"] .bdg{background:url(https://tastyplug.tastycat.org/images/tastybot.png) no-repeat;}#chat-messages [data-cid|="3946454"] .badge-box{background:rgba(0,0,0,0)!important;}.icon-tp-pm{background:url(https://tastyplug.tastycat.org/images/private-message.png) no-repeat}</style>');
+        $('head').append('<style type=text/css id=tastyplug-css>#tastyplug-ui{-moz-user-select:none;-webkit-user-select:none;position:absolute;width:150px;border-radius:10px;background-color:#1C1F25;background-image:-webkit-gradient(linear,left bottom,left top,color-stop(0,#1C1F25),color-stop(1,#282D33));background-image:-o-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:-moz-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:-webkit-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:-ms-linear-gradient(top,#1C1F25 0,#282D33 100%);background-image:linear-gradient(to top,#1C1F25 0,#282D33 100%);z-index:9;padding-bottom:1.5px;color:#DDD}#tastyplug-ui a{color:inherit;text-decoration:none}.tastyplug-icon{position:relative;float:right}#tastyplug-ui .tp-toggle{color:#F04F30}#tastyplug-ui .tp-toggle.button-on{color:#1CC7ED}#tp-title{margin:0 15px;padding:3px 0;color:#A874FC;font-size:19px;cursor:move}.tp-mainbutton,.tp-secbutton{margin:0 15px;padding:2px 0 3px;font-size:15px;border-top:1px solid rgba(56,60,68,.85);cursor:pointer}.tp-highlight{background-color:rgba(168,116,252,.33)}.tp-secbutton{padding-left:8px}#tastyplug-ui .icon-drag-handle{position:relative;float:right;top:3px;height:14px;width:14px;background-position:-183px -113px}#waitlist-button .eta{left:45px;font-size:10px}#chat-messages .tastyplug-pm .icon{left:5.5px;top:6px}#chat-pm-button{left:-3px}#chat-messages div.tastyplug-pm.mention{background:linear-gradient(135deg,#FF00CB 0,#0a0a0a 13%,#0a0a0a 100%)}#chat-messages div.tastyplug-pm.mention:nth-child(2n+1){background:linear-gradient(135deg,#FF00CB 0,#111317 13%,#111317 100%)}#chat div[class*=" tp-"],#chat div[class^=tp-]{background-color:#0a0a0a}#chat div[class*=" tp-"]:nth-child(2n+1),#chat div[class^=tp-]:nth-child(2n+1){background-color:#111317}#chat-messages .tastyplug-pm .msg .from span.un{color:#FF00CB;font-weight:700}#user-lists .list.room .user .icon-meh{left:auto;right:8px;top:-1px}#chat-messages [data-cid|="3946454"]{background-color:#2D002D}#chat .mention:nth-child(2n+1)[data-cid|="3946454"],#chat .message:nth-child(2n+1)[data-cid|="3946454"],#chat-messages .emote:nth-child(2n+1)[data-cid|="3946454"]{background-color:#240024}#chat .emote[data-cid|="3946454"] .text,#chat .mention[data-cid|="3946454"] .text,#chat .message[data-cid|="3946454"] .text{font-weight:700;color:#CFCFCF}#chat .emote[data-cid|="3946454"] .text{font-style:normal}div.badge-box img.tastyplug-icon{padding:2px}#chat .cm.tp-info .text,#chat .cm.tp-info div.from.tastyplug span.un{color:#1CC7ED}#chat .cm.tp-info .text span{color:#EEE}#chat .cm.tp-error .text,#chat .cm.tp-error div.from.tastyplug span.un{color:#C42E3B}#chat .cm.tp-init .text,#chat .cm.tp-init div.from.tastyplug span.un{color:#D1D119}#chat .cm.tp-join-admin .text,#chat .cm.tp-join-admin div.from.tastyplug span.un{color:#1CC7ED}#chat .cm.tp-join-ba .text,#chat .cm.tp-join-ba div.from.tastyplug span.un{color:#088C30}#chat .cm.tp-join-host .text,#chat .cm.tp-join-host div.from.tastyplug span.un{color:#D1D119}#chat .cm.tp-join-cohost .text,#chat .cm.tp-join-cohost div.from.tastyplug span.un{color:#F59425}#chat .cm.tp-join-staff .text,#chat .cm.tp-join-staff div.from.tastyplug span.un{color:#C322E3}#chat .cm.tp-join-friend .text,#chat .cm.tp-join-friend div.from.tastyplug span.un{color:#009CDD}#chat .cm.tp-join-lvl1 .text,#chat .cm.tp-join-lvl1 div.from.tastyplug span.un{color:#FFDD6F}.tp-img{width:auto;height:auto;max-width:270px;max-height:250px}.legacy-chat .tastyplug-img-delete{top:26px}.tastyplug-img-delete{position:absolute;top:42px;right:4px;background-color:#F04F30;padding:0 3px;cursor:pointer;z-index:1}#playback .tp-video-hide,#playback.tp-video-hide{height:0!important}.tp-emote{display:inline-block;vertical-align:top}#chat-messages [data-cid|="3946454"] .bdg{background:url(https://tastyplug.tastycat.org/images/tastybot.png) no-repeat;}#chat-messages [data-cid|="3946454"] .badge-box{background:rgba(0,0,0,0)!important;}.icon-tp-pm{background:url(https://tastyplug.tastycat.org/images/private-message.png) no-repeat}</style>');
         $('body').append('<div id=tp-room style=position:absolute;top:54px;left:0></div><div id=tastyplug-ui><div id=tp-title>TastyPlug <img class=tastyplug-icon src=https://tastyplug.tastycat.org/images/tastybot.png></div><div class="tp-mainbutton tp-toggle button-on" id=tp-autowoot><span>Autowoot</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-autojoin><span>Autojoin</span></div><div class="tp-mainbutton tp-toggle" id=tp-hidevideo><span>Hide Video</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-legacychat><span>Legacy Chat</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-boothalert><span>Booth Alert</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-histalert><span>History Alert</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-mehtrack><span>Meh Tracker</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-chatimgs><span>Chat Images</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-emotes><span>Cust. Emotes</span></div>'+
             '<div class="tp-mainbutton tp-toggle button-on" id=tp-emojis><div class="icon icon-drag-handle"></div><span>Tastymojis</span></div><div class="tp-secbutton tp-secmojis tp-toggle" id=tp-emojiios><span>iOS</span></div><div class="tp-secbutton tp-secmojis tp-toggle" id=tp-emojitwitter><span>Twitter</span></div><div class="tp-secbutton tp-secmojis tp-toggle" id=tp-emojiemojione><span>Emojione</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-mentions><div class="icon icon-drag-handle"></div><span>Chat Mentions</span></div><div class="tp-secbutton tp-secmention" id=tp-addmention><span>Add</span></div><div class="tp-secbutton tp-secmention" id=tp-delmention><span>Delete</span></div><div class="tp-secbutton tp-secmention" id=tp-listmention><span>List</span></div><div class="tp-mainbutton tp-toggle button-on" id=tp-joinnotifs><div class="icon icon-drag-handle"></div><span>Join Notifs.</span></div><div class="tp-secbutton tp-secjoin tp-toggle button-on" id=tp-joinranks><span>Ranks</span></div><div class="tp-secbutton tp-secjoin tp-toggle button-on" id=tp-joinfriends><span>Friends</span></div><div class="tp-secbutton tp-secjoin tp-toggle button-on" id=tp-joinlvl1><span>Level 1s</span></div><a href=https://emotes.tastycat.org target=_blank><div class=tp-mainbutton id=tp-listemotes><span>Emotes List</span></div></a></div>');
         if (room == '/tastycat') $('#waitlist-button').append('<span class="eta"></span>');
@@ -169,7 +169,7 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
                 saveSettings();
             }
         };
-        $('#tastyplug-ui').draggable(dragopts);
+        if (typeof $.draggable != "undefined") $('#tastyplug-ui').draggable(dragopts);
         //hover over song title
         $('#now-playing-media').hover(
             function(){
@@ -373,23 +373,58 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
         });
     };
 
-    function loadEmotes() {
+    function fetchJSON (url, callback) {
+        if (!callback || typeof callback != "function") return;
+
         $.ajax({
-            cache: false,
-            url: "https://emotes.tastycat.org/emotes-full.json",
-            dataType: "json",
-            success: function(a) {
-                for(var key in a.emotes) {
-                    if(a.emotes.hasOwnProperty(key)) {
-                        emotes[key.toLowerCase()] = a.emotes[key];
-                    }
-                }
-            },
-            error: function() {
-                Chat('error', 'Could not load the TastyPlug custom emotes. Refresh and/or try again later.');
-            }
+            type: "GET",
+            url: url
+        }).success(function (data) {
+            callback(null, data);
+        }).fail(function (data) {
+            callback("no json for you");
         });
-        }
+    }
+
+    function loadEmotes() {
+        var regex = /{image_id}/, links = {
+            tp: "https://emotes.tastycat.org/emotes.json",
+            rcs: "https://code.radiant.dj/require/emotes/radiant_emotes.json",
+            twitch: "https://twitchemotes.com/api_cache/v2/global.json",
+            twitchSub: "https://twitchemotes.com/api_cache/v2/subscriber.json"
+        };
+
+        fetchJSON(links.twitchSub, function (err, data) {
+            if (err) Chat('error', 'Could not load the Twitch Subscriber emotes. Refresh and/or try again later.');
+            else {
+                for (var channel in data.channels)
+                    if (data.channels.hasOwnProperty(channel)) {
+                        var e = data.channels[channel].emotes;
+                        for (var i = 0; i < e.length; i++)
+                            emotes[e[i].code.toLowerCase()] = data.template.small.replace(regex, e[i].image_id);
+                    }
+            }
+            fetchJSON(links.twitch, function (err, data) {
+                if (err) Chat('error', 'Could not load the Twitch Global emotes. Refresh and/or try again later.');
+                else
+                    for (var i in data.emotes)
+                        emotes[i.toLowerCase()] = data.template.small.replace(regex, data.emotes[i].image_id);
+                fetchJSON(links.rcs, function (err, data) {
+                    if (err) Chat('error', 'Could not load the RCS emotes. Refresh and/or try again later.');
+                    else
+                        for (var i in data.emotes)
+                            for (var j in data.emotes[i])
+                                emotes[j.toLowerCase()] = "https://cdn.radiant.dj/rcs/emotes/img/" + data.emotes[i][j];
+                    fetchJSON(links.tp, function (err, data) {
+                        if (err) Chat('error', 'Could not load the tastyPlug emotes. Refresh and/or try again later.');
+                        else
+                            for (var i in data.emotes)
+                                emotes[i.toLowerCase()] = data.emotes[i];
+                    });
+                });
+            });
+        });
+    }
         var isShuttingDown = false;
         window.tastyPlugShutDown = function() {
             isShuttingDown = true;
@@ -439,7 +474,7 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
             if (settings.emotes) {
                 var txt = msg.find('.text'), html = txt.html();
                 var chat = $('#chat-messages'), d = chat.scrollTop() > chat[0].scrollHeight - chat.height() - 28;
-                html = custEmotes(html);
+                html = custEmotes(html, a.message);
                 txt.html(html);
                 if (d) chat.scrollTop(chat[0].scrollHeight);
             }
@@ -831,24 +866,20 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
             if (e) chat.scrollTop(chat[0].scrollHeight);
         }
 
-        function custEmotes(txt) {
-            if (!Object.keys(emotes).length || typeof txt != 'string') return;
-            var em = txt.match(/:[^:\s]+:/g);
+        function custEmotes(txt, message) {
+            var keys = Object.keys(emotes);
+            if (!keys.length || typeof txt != 'string') return;
+            var em = message.match(/:[^:\s]+:/g);
             if (!em) return txt;
             for (var i = 0; i < em.length; i++) {
                 var emlow = em[i].substring(1, em[i].length-1).toLowerCase();
-                for (var j in emotes) {
-                    if (emlow == j.toLowerCase()) {
-                        if (!settings.hidden && emotes[j].hidden) break;
-                        var msg = txt.split(em[i]), res = msg[0];
-                        for (var k = 1; k < msg.length; k++) {
-                            var align = parseInt(emotes[j].height) < 20 ? '-mid' : '';
-                            res += '<div class="custom-emote' + align + '" title="' + (emotes[j].hidden ? 'Hidden Emote!' : j) + '" style="background-image:url(' + emotes[j].url + ');width:' + emotes[j].width + 'px;height:' + emotes[j].height + 'px;"></div>';
-                            res += msg[k];
-                        }
-                        txt = res;
-                        break;
+                if (keys.indexOf(emlow)) {
+                    var msg = txt.split(em[i]), res = msg[0];
+                    for (var k = 1; k < msg.length; k++) {
+                        res += '<img class="tp-emote" title="' + emlow + '" src="' + emotes[emlow] + '" />';
+                        res += msg[k];
                     }
+                    txt = res;
                 }
             }
             return txt;
@@ -874,7 +905,6 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
                         $("head").append('<style id="tastymojis-css" type="text/css">' + sizeCSS + (settings.emojiset != "ios" ? "span.emoji-inner{background:url('https://tastyplug.tastycat.org/images/" + settings.emojiset + ".png')" : "") + '</style>');
                     }
                 } else {
-                    console.log(settings.emojiset);
                     if (settings.tastymojis) $("#tastymojis-css").text(sizeCSS + (settings.emojiset != "ios" ? "span.emoji-inner{background:url('https://tastyplug.tastycat.org/images/" + settings.emojiset + ".png')" : ""));
                 }
             }
