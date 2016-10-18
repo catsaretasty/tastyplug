@@ -169,7 +169,8 @@ if (typeof window.tastyPlugShutDown != 'undefined') window.tastyPlugShutDown();
                 saveSettings();
             }
         };
-        if (typeof $.draggable != "undefined") $('#tastyplug-ui').draggable(dragopts);
+        var tplugUI = $('#tastyplug-ui');
+        if (typeof tplugUI.draggable != "undefined") tplugUI.draggable(dragopts);
         //hover over song title
         $('#now-playing-media').hover(
             function(){
