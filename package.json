@@ -3,7 +3,7 @@
   "display_name": "TastyPlug",
   "tastyplug_base_url": "https://tastyplug.tastycat.org",
   "version_title": "now with dank emotes!",
-  "version": "3.9.2",
+  "version": "3.9.3",
   "description": "a plug.dj extension",
   "scripts": {
     "sign": "./node_modules/web-ext/bin/web-ext sign --api-key user:12335406:167 --api-secret ${TASTYPLUG_AMO_SECRET} --source-dir build/extension --artifacts-dir build/dist",
