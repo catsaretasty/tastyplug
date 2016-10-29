@@ -51,6 +51,9 @@ html
             h1.center TastyPlug - The plug.dj extension.
             #intro.center
                 h5 Use the UserScript for the quickest updates and the best experience.
+                p Firefox must use the userscript with <a href="https://addons.mozilla.org/en-US/firefox/addon/greasemonkey/">Greasemonkey</a>
+                | .  Chrome users can either use the userscript with <a href="https://chrome.google.com/webstore/detail/tampermonkey/dhdgffkkebhmkfjojejmpbldmpobfkfo">Tampermonkey</a>
+                | or have slower updates with the <a href="https://chrome.google.com/webstore/detail/tastyplug/faccgibalfdoihmenknhpfhldkmgaang">Chrome Web Store extension</a>.
                 p All of them,
                     span.bold  except for the bookmark
                     | , start automatically when you enter a room on plug.dj. If you wish to
@@ -59,17 +62,13 @@ html
                 p Hover over a button to see more information.
 
                 div.row
-                    div.three.columns
+                    div.one-third.columns
                         a(href="https://tastyplug.tastycat.org/tastyplug.user.js")
                             button(data-hint="Recommended. Use any UserScript Extension.").hint--bottom.hint--info.hint--rounded UserScript
-                    div.three.columns
+                    div.one-third.columns
                         a(href="javascript:(function(){$.getScript('https://tastyplug.tastycat.org/tastyplug.min.js');}());")
                             button(data-hint="Manual Bookmark").hint--bottom.hint--success.hint--rounded TastyPlug
-
-                    div.three.columns
-                        a(href="https://addons.mozilla.org/en-US/firefox/addon/tastyplug",target="_blank")
-                            button(data-hint="It may take up from 3 to 5 days to receive updates!").hint--bottom.hint--warning.hint--rounded Firefox
-                    div.three.columns
+                    div.one-third.columns
                         a(href="https://chrome.google.com/webstore/detail/tastyplug/faccgibalfdoihmenknhpfhldkmgaang",target="_blank")
                             button(data-hint="It may take up to 12 hours to receive updates!").hint--bottom.hint--warning.hint--rounded Chrome
             hr
