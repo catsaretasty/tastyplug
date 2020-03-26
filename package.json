@@ -1,7 +1,7 @@
 {
   "name": "tastyplug",
   "display_name": "TastyPlug",
-  "tastyplug_base_url": "https://tastyplug.tastycat.org",
+  "tastyplug_base_url": "https://catsaretasty.github.io/tastyplug",
   "version_title": "now with dank emotes!",
   "version": "3.9.3",
   "description": "a plug.dj extension",
