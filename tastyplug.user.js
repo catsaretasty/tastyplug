@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name            TastyPlug
-// @namespace       https://catsaretasty.github.com/tastyplug
+// @namespace       https://catsaretasty.github.io/tastyplug
 // @description     a plug.dj extension
 // @icon            https://catsaretasty.github.io/tastyplug/images/icon128.png
 // @include         https://plug.dj/*
