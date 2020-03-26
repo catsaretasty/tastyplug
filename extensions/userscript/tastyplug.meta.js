@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name            <%= display_name %>
-// @namespace       https://catsaretasty.github.com/tastyplug
+// @namespace       https://catsaretasty.github.io/tastyplug
 // @description     <%= description %>
 // @icon            <%= tastyplug_base_url %>/images/icon128.png
 // @include         https://plug.dj/*
