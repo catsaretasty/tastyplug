@@ -1,0 +1,133 @@
+#chat div.message div.badge-box,
+#chat div.emote div.badge-box,
+#chat div.mention div.badge-box,
+#chat div.admin i:not(.icon-chat-admin),
+#chat div.ambassador i:not(.icon-chat-ambassador),
+#chat div.staff i:not(.icon-chat-host):not(.icon-chat-cohost):not(.icon-chat-manager):not(.icon-chat-bouncer):not(.icon-chat-dj) {
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+}
+
+#chat div.message,
+#chat div.emote,
+#chat div.mention {
+    min-height: 28px;
+}
+
+#chat div.message div.from>span.un:first-child,
+#chat div.emote div.from>span.un:first-child,
+#chat div.mention div.from>span.un:first-child {
+    padding-left: 15px;
+}
+
+#chat div.delete-button {
+    margin: 5px;
+    padding: 0 5px;
+    height: 18px;
+    line-height: 18px;
+    top: 0;
+    right: 0;
+}
+
+#chat div.moderation div.badge-box,
+#chat div.user-action div.badge-box {
+    width: auto;
+    min-width: 15px;
+    height: auto;
+    min-height: 15px;
+    margin: 0;
+    padding: 6px 0 6px 6px;
+    background: 0 0;
+}
+
+#chat div.moderation div.badge-box i.icon-skip,
+#chat div.moderation div.badge-box i.icon-gift,
+#chat div.moderation div.badge-box i.icon-unlocked-grey,
+#chat div.moderation div.badge-box i.icon-locked-grey,
+#chat div.moderation div.badge-box i.icon-join-waitlist,
+#chat div.moderation div.badge-box i.icon-mute,
+#chat div.moderation div.badge-box i.icon-ban,
+#chat div.moderation div.badge-box i.icon-arrow-up,
+#chat div.moderation div.badge-box i.icon-arrow-down,
+#chat div.user-action div.badge-box i.icon-skip,
+#chat div.user-action div.badge-box i.icon-gift,
+#chat div.user-action div.badge-box i.icon-unlocked-grey,
+#chat div.user-action div.badge-box i.icon-locked-grey,
+#chat div.user-action div.badge-box i.icon-join-waitlist,
+#chat div.user-action div.badge-box i.icon-mute,
+#chat div.user-action div.badge-box i.icon-ban,
+#chat div.user-action div.badge-box i.icon-arrow-up,
+#chat div.user-action div.badge-box i.icon-arrow-down {
+    -webkit-transform: scale(0.8, 0.8);
+    -moz-transform: scale(0.8, 0.8);
+    -ms-transform: scale(0.8, 0.8);
+    -o-transform: scale(0.8, 0.8);
+    transform: scale(0.8, 0.8);
+}
+
+#chat div.moderation div.badge-box i.icon-skip,
+#chat div.user-action div.badge-box i.icon-skip {
+    margin-left: -3px;
+}
+
+#chat div.moderation div.badge-box i.icon-gift,
+#chat div.user-action div.badge-box i.icon-gift {
+    margin-left: -8px;
+}
+
+#chat div.moderation div.badge-box i.icon-unlocked-grey,
+#chat div.moderation div.badge-box i.icon-locked-grey,
+#chat div.user-action div.badge-box i.icon-unlocked-grey,
+#chat div.user-action div.badge-box i.icon-locked-grey {
+    margin-left: -8px;
+}
+
+#chat div.moderation div.badge-box i.icon-join-waitlist,
+#chat div.user-action div.badge-box i.icon-join-waitlist {
+    margin-left: -9px;
+    margin-top: -6px;
+}
+
+#chat div.moderation div.badge-box i.icon-ban,
+#chat div.user-action div.badge-box i.icon-ban {
+    margin-left: -4px;
+}
+
+#chat div.moderation div.badge-box i.icon-arrow-up,
+#chat div.moderation div.badge-box i.icon-arrow-down,
+#chat div.user-action div.badge-box i.icon-arrow-up,
+#chat div.user-action div.badge-box i.icon-arrow-down {
+    margin-left: -10px;
+    margin-top: -10px;
+}
+
+#chat div.moderation div.msg,
+#chat div.user-action div.msg,
+#chat div.message div.msg,
+#chat div.emote div.msg,
+#chat div.mention div.msg {
+    padding: 6px;
+}
+
+#chat div.text {
+    display: inline;
+}
+
+#chat div.from {
+    display: inline;
+}
+
+#chat div.from i.icon {
+    margin-right: 0;
+}
+
+#chat div.from span.un {
+    margin: 0 4px;
+}
+
+#chat div.from span.timestamp {
+    margin-left: 10px;
+}

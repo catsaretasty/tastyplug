@@ -1,0 +1,499 @@
+/* Possible icons we can use from plug
+.icon-drag-media      // general info/debugging
+.icon-chat-admin      // admin joining the room
+.icon-chat-ambassador // ba joining the room
+.icon-chat-dj         // rdj joining the room
+.icon-chat-bouncer    // bouncer joining the room
+.icon-chat-manager    // manager joining the room
+.icon-chat-host       // host/cohost joining the room
+.icon-chat-system     // errors or other issues
+.icon-community-users // friend joining the room
+.icon-next-track      // currently playing song
+.icon-woot            // doh
+
+
+.icon-history-white   // needs resizing
+*/
+
+
+/* DEFAULT: addChat */
+
+.cm.tp {
+    min-height: 0px !important;
+    position: relative;
+    clear: left;
+    width: 100%;
+    word-wrap: break-word;
+    border-left: #777f92 3px solid;
+}
+
+.cm.tp .badge-box {
+    height: 16px;
+    background: none;
+    position: absolute !important;
+    overflow: visible !important;
+}
+
+.tp .msg .text {
+    display: inline;
+    padding-left: 3px;
+    word-wrap: break-word;
+    word-break: break-word;
+    color: #777f92;
+}
+
+.cm.tp .badge-box.no-badge {
+    background: none;
+}
+
+.cm.tp .msg .timestamp {
+    float: right;
+    padding-right: 5px;
+}
+
+.cm.tp .msg .from {
+    display: inline;
+}
+
+.cm.tp .delete-button {
+    padding: 2px 7px 2px 7px;
+}
+
+.cm.tp .msg {
+    padding: 6px 6px 6px 46px;
+}
+
+.cm.tp .icon {
+    margin-top: -8px;
+}
+
+.cm.tp .text a,
+#chat .tp .text a:visited {
+    color: #777f92 !important;
+}
+
+.cm.tp .msg .from i {
+    display: none;
+}
+
+
+/* TYPE: startup */
+
+.cm.tp.tp-startup {
+    border-left: #ac76ff 3px solid;
+}
+
+.cm.tp.tp-startup .un {
+    color: #ac76ff !important;
+}
+
+.cm.tp.tp-startup .un::after,
+.cm.tp.tp-levelOne .un::after {
+    content: " ";
+}
+
+.cm.tp.tp-startup .text {
+    padding-left: 0px;
+    color: #ac76ff;
+}
+
+.cm.tp.tp-startup .badge-box {
+    margin: 0px 12px !important;
+}
+
+
+/* TYPE: log */
+
+.cm.tp.tp-log {
+    border-left: #777f92 3px solid;
+}
+
+
+/* TYPE: error & levelOne */
+
+.cm.tp.tp-error,
+.cm.tp.tp-levelOne {
+    border-left: #FF5900 3px solid;
+}
+
+.cm.tp.tp-error .text,
+.cm.tp.tp-levelOne .text {
+    padding-left: 0px;
+    color: #FF5900;
+}
+
+
+/* TYPE: whois */
+
+.cm.tp.tp-whois {
+    border-left: #009cdd 3px solid;
+}
+
+.cm.tp.tp-whois .un {
+    display: none;
+}
+
+.cm.tp.tp-whois .text {
+    color: #ccc;
+}
+
+.cm.tp.tp-whois .text span,
+#chat .tp.tp-whois .text .title {
+    color: #009cdd;
+}
+
+.cm.tp.tp-whois .text {
+    padding-left: 0px;
+}
+
+
+/* TYPE: meh */
+
+.cm.tp.tp-meh {
+    border-left: #c42e3b 3px solid;
+}
+
+.cm.tp.tp-meh .text {
+    color: #c42e3b;
+}
+
+
+/* TYPE: user-join */
+
+.cm.tp.tp-join-admin {
+    border-left: #42a5dc 3px solid;
+}
+
+.cm.tp.tp-join-admin .text {
+    color: #42a5dc;
+}
+
+.cm.tp.tp-join-ambassador {
+    border-left: #89be6c 3px solid;
+}
+
+.cm.tp.tp-join-ambassador .text {
+    color: #89be6c;
+}
+
+.cm.tp.tp-join-staff {
+    border-left: #ac76ff 3px solid;
+}
+
+.cm.tp.tp-join-staff .text {
+    color: #ac76ff;
+}
+
+.cm.tp.tp-join-admin .icon,
+.cm.tp.tp-join-ambassador .icon {
+    margin-top: -2px;
+    margin-left: 7px !important;
+}
+
+
+/* TYPE: warning */
+
+.cm.tp.tp-warning .text {
+    color: #c42e3b;
+}
+
+
+/* TYPE: success */
+
+.cm.tp.tp-success {
+    border-left: #90ad2f 3px solid;
+}
+
+
+/* TYPE: warning */
+
+.cm.tp.tp-warning {
+    border-left: #c42e3b 3px solid;
+}
+
+
+/* TYPE: info-small */
+
+.cm.tp.tp-info-small {
+    border-left: #009cdd 3px solid;
+}
+
+.cm.tp.tp-info-small .text {
+    padding-left: 0px;
+    color: #009cdd;
+}
+
+
+/* OTHER */
+
+.cm.tp.tp-error .un,
+#chat .tp.tp-info-small .un {
+    display: none;
+}
+
+.cm.tp.tp-info-small .icon.icon-chat-system {
+    background: #ccc !important;
+    mask: url("https://cdn.plug.dj/_/static/images/icons.38f7ee77fd7ad2bc018b1a25fd4a1f0aaba5a4cd.png");
+    -webkit-mask: url("https://cdn.plug.dj/_/static/images/icons.38f7ee77fd7ad2bc018b1a25fd4a1f0aaba5a4cd.png");
+    mask-position: -175px -245px;
+    -webkit-mask-position: -175px -245px;
+}
+
+.cm.tp .tp-icon-default {
+    background: url("https://i.imgur.com/Htz7txq.png");
+    width: 25px;
+    height: 25px;
+    position: absolute;
+}
+
+
+/* USER INTERFACE */
+
+#tplug-ui {
+    position: absolute;
+    z-index: 9;
+}
+
+.tp-mainbutton {
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    left: 72.5px;
+    cursor: move;
+    background-color: #141821;
+    border-radius: 100px;
+}
+
+.tp-mainbutton:hover {
+    background-color: #0f131c;
+    -o-transition: 0.6s;
+    -moz-transition: 0.6s;
+    -webkit-transition: 0.6s;
+}
+
+.tp-logo {
+    background: url("https://i.imgur.com/Htz7txq.png");
+    width: 25px;
+    height: 25px;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+
+.tp-menu {
+    width: 200px;
+    height: auto;
+    background-color: #141821;
+    position: absolute;
+    top: 65px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.tp-menu .button {
+    background-color: inherit;
+    color: #eee;
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 2px 0px 8px 4px;
+    border-radius: 2px;
+    position: relative;
+    height: 15px;
+}
+
+.tp-menu .button {
+    position: relative;
+}
+
+.tp-menu .subtype .toggle {
+    width: 80%;
+    float: left;
+}
+
+.tp-menu .expand {
+    width: 20%;
+    float: right;
+    position: relative;
+}
+
+.tp-menu .button:not(:last-child) {
+    border-bottom: 2px solid rgba(10, 10, 10, 0.2);
+}
+
+.tp-menu .button:hover {
+    background-color: #0f131c;
+}
+
+.tp-menu .toggle .icon {
+    display: none;
+    position: absolute;
+    top: -2px;
+}
+
+.tp-menu .link .icon {
+    position: absolute;
+    top: -2px;
+}
+
+.tp-menu .expand .icon {
+    float: right;
+    right: 0px;
+    position: absolute;
+    top: -7px;
+}
+
+.tp-menu .settings .icon {
+    float: right;
+    right: 0px;
+    position: absolute;
+    top: -2px;
+}
+
+.tp-menu .enabled .icon {
+    display: block;
+}
+
+.tp-menu .title {
+    padding-left: 35px;
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Chrome/Safari/Opera */
+    -khtml-user-select: none;
+    /* Konqueror */
+    -moz-user-select: none;
+    /* Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+}
+
+.tp .text a,
+.tp-menu a {
+    text-decoration: none !important;
+}
+
+#dialog-tp-mentions {
+    width: 630px;
+}
+
+#dialog-tp-mentions.mentions .left {
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#111317', endColorstr='#0f1114', GradientType=0);
+}
+
+#dialog-tp-mentions.mentions .left {
+    background: #111317;
+    background: -moz-linear-gradient(top, #111317 0, #1c1f25 46%, #0f1114 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0, #111317), color-stop(46%, #1c1f25), color-stop(100%, #0f1114));
+    background: -webkit-linear-gradient(top, #111317 0, #1c1f25 46%, #0f1114 100%);
+    background: -o-linear-gradient(top, #111317 0, #1c1f25 46%, #0f1114 100%);
+    background: -ms-linear-gradient(top, #111317 0, #1c1f25 46%, #0f1114 100%);
+    background: linear-gradient(to bottom, #111317 0, #1c1f25 46%, #0f1114 100%);
+}
+
+#dialog-tp-mentions .mentions-box {
+    position: relative;
+    width: 90%;
+    height: 200px;
+}
+
+#dialog-tp-mentions .mentions-box input {
+    position: relative;
+    padding: 1em .75em;
+    width: 550px;
+    border: 0;
+    background: #282c35;
+    color: #eee;
+    font-weight: 400;
+    font-size: 14px;
+    font-family: "Open Sans", sans-serif;
+}
+
+#dialog-tp-mentions .mentions-box .container {
+    position: relative;
+    margin: 32px auto 0;
+    width: 90%;
+}
+
+#dialog-tp-mentions .mentions-box .container .helpText {
+    display: block;
+    position: relative;
+    margin-top: 5px;
+    width: 400px;
+    color: #808691;
+    text-align: left;
+    overflow-wrap: break-word;
+}
+
+#dialog-tp-mentions .dialog-body {
+    height: 136px;
+}
+
+#dialog-tp-mentions .left {
+    position: relative;
+    float: left;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+
+#dialog-tp-mentions .dialog-frame .button.save {
+    color: #eee;
+    background: #89be6c;
+    background: -moz-linear-gradient(top, #89be6c 0, #67a952 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #89be6c), color-stop(100%, #67a952));
+    background: -webkit-linear-gradient(top, #89be6c 0, #67a952 100%);
+    background: -o-linear-gradient(top, #89be6c 0, #67a952 100%);
+    background: -ms-linear-gradient(top, #89be6c 0, #67a952 100%);
+    background: linear-gradient(to bottom, #89be6c 0, #67a952 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#89be6c', endColorstr='#67a952', GradientType=0);
+}
+
+#dialog-tp-mentions .dialog-frame .button {
+    width: 33.3%;
+}
+
+#dialog-tp-mentions .dialog-frame .button.cancel {
+    color: #eee;
+    background: #f46b40;
+    background: -moz-linear-gradient(top, #f46b40 0, #f04f30 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0, #f46b40), color-stop(100%, #f04f30));
+    background: -webkit-linear-gradient(top, #f46b40 0, #f04f30 100%);
+    background: -o-linear-gradient(top, #f46b40 0, #f04f30 100%);
+    background: -ms-linear-gradient(top, #f46b40 0, #f04f30 100%);
+    background: linear-gradient(to bottom, #f46b40 0, #f04f30 100%);
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#f46b40', endColorstr='#f04f30', GradientType=0);
+}
+
+.cm[data-cid|="3946454"] {
+    background-color: #2D002D;
+}
+
+#chat .cm[data-cid^="3946454"] {
+    background-color: #240024;
+}
+
+#chat .cm[data-cid|="3946454"] .text .name {
+    font-weight: 700;
+}
+
+#chat .cm[data-cid|="3946454"] .text .name.user {
+    color: #CFCFCF;
+}
+
+#chat .cm[data-cid|="3946454"] .text {
+    font-weight: 700;
+    color: #CFCFCF;
+}
+
+#chat .emote[data-cid|="3946454"] .text {
+    font-style: normal;
+}
+
+#chat .cm[data-cid|="3946454"] .badge-box {
+    background: none;
+}
+
+#chat-messages [data-cid|="3946454"] .bdg {
+    background: url(https://catsaretasty.github.io/tastyplug/images/tastybot.png) no-repeat;
+}

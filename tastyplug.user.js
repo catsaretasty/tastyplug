@@ -19,7 +19,7 @@
 // @exclude         https://plug.dj/@/*
 // @exclude         https://plug.dj/_/*
 // @author          Chip (git) & Olivier Houle (Fungus)
-// @version         3.9.3
+// @version         4.0.0
 // @downloadURL     https://catsaretasty.github.io/tastyplug/tastyplug.user.js
 // @updateURL       https://catsaretasty.github.io/tastyplug/tastyplug.meta.js
 // ==/UserScript==
@@ -45,11 +45,3 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-var tastyplug = document.createElement('script');
-tastyplug.id = 'tastyplug-bootstrap';
-tastyplug.src = 'https://catsaretasty.github.io/tastyplug/tastyplug.min.js';
-tastyplug.onload = function() {
-    this.parentNode.removeChild(this);
-};
-(document.head || document.documentElement).appendChild(tastyplug);

@@ -19,7 +19,7 @@
 // @exclude         https://plug.dj/@/*
 // @exclude         https://plug.dj/_/*
 // @author          Chip (git) & Olivier Houle (Fungus)
-// @version         3.9.3
+// @version         4.0.0
 // @downloadURL     https://catsaretasty.github.io/tastyplug/tastyplug.user.js
 // @updateURL       https://catsaretasty.github.io/tastyplug/tastyplug.meta.js
 // ==/UserScript==
