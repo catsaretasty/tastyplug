@@ -11,7 +11,7 @@ window.addEventListener('message', function(event) {
             case 'LOAD_JQUERY_UI':
                 var jQueryUI = document.createElement('script');
                 jQueryUI.id = 'tastyplug-jquery-ui-custom-loader';
-                jQueryUI.src = 'https://tastyplug.tastycat.org/jquery-ui.custom.min.js';
+                jQueryUI.src = 'https://catsaretasty.github.io/tastyplug/jquery-ui.custom.min.js';
                 jQueryUI.onload = function() {
                     this.parentNode.removeChild(this);
                 };
@@ -21,7 +21,7 @@ window.addEventListener('message', function(event) {
                 if (!loaded) {
                     var tastyplug = document.createElement('script');
                     tastyplug.id = 'tastyplug';
-                    tastyplug.src = 'https://tastyplug.tastycat.org/tastyplug.core.min.js';
+                    tastyplug.src = 'https://catsaretasty.github.io/tastyplug/tastyplug.core.min.js';
                     tastyplug.onload = function() {
                         this.parentNode.removeChild(this);
                     };
@@ -40,7 +40,7 @@ window.addEventListener('message', function(event) {
 
 var bootstrap = document.createElement('script');
 bootstrap.id = 'tastyplug-bootstrap';
-bootstrap.src = 'https://tastyplug.tastycat.org/bootstrap.min.js';
+bootstrap.src = 'https://catsaretasty.github.io/tastyplug/bootstrap.min.js';
 bootstrap.onload = function() {
     this.parentNode.removeChild(this);
 };

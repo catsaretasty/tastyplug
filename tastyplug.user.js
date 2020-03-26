@@ -2,7 +2,7 @@
 // @name            TastyPlug
 // @namespace       https://tastyplug.tastycat.org
 // @description     a plug.dj extension
-// @icon            https://tastyplug.tastycat.org/images/icon128.png
+// @icon            https://catsaretasty.github.io/tastyplug/images/icon128.png
 // @include         https://plug.dj/*
 // @exclude         https://plug.dj/dashboard
 // @exclude         https://plug.dj/privacy
@@ -20,8 +20,8 @@
 // @exclude         https://plug.dj/_/*
 // @author          Chip (git) & Olivier Houle (Fungus)
 // @version         3.9.3
-// @downloadURL     https://tastyplug.tastycat.org/tastyplug.user.js
-// @updateURL       https://tastyplug.tastycat.org/tastyplug.meta.js
+// @downloadURL     https://catsaretasty.github.io/tastyplug/tastyplug.user.js
+// @updateURL       https://catsaretasty.github.io/tastyplug/tastyplug.meta.js
 // ==/UserScript==
 
 /*
@@ -48,7 +48,7 @@
 
 var tastyplug = document.createElement('script');
 tastyplug.id = 'tastyplug-bootstrap';
-tastyplug.src = 'https://tastyplug.tastycat.org/tastyplug.min.js';
+tastyplug.src = 'https://catsaretasty.github.io/tastyplug/tastyplug.min.js';
 tastyplug.onload = function() {
     this.parentNode.removeChild(this);
 };
